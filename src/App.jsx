@@ -293,11 +293,15 @@ const App = () => {
             <p className="reveal delay-200 text-base md:text-xl text-slate-300 max-w-2xl mb-8 md:mb-10 px-4 leading-relaxed">
               Ubah Pekerjaan Manual mu menjadi Pekerjaan Otomatis dengan Aplikasi Custom yang Murah.
             </p>
-            <div className="reveal delay-300 w-full px-4 sm:px-0 sm:w-auto">
+            <div className="reveal delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-4 sm:px-0">
               <button onClick={() => scrollToSection('portfolio')} className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-2xl font-bold transition-all shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-2 hover:-translate-y-1">
                 <Briefcase className="w-5 h-5 md:w-6 md:h-6" />
                 Lihat Aplikasi Kami
               </button>
+              <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 hover:-translate-y-1 backdrop-blur-md">
+                <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-emerald-400" />
+                Konsultasi Gratis
+              </a>
             </div>
           </div>
         </section>
@@ -466,23 +470,23 @@ const App = () => {
             </div>
             <h2 className="reveal delay-100 text-4xl sm:text-6xl md:text-8xl font-black text-white mb-6 md:mb-8">Let's <span className="text-emerald-500">Talk.</span></h2>
             <div className="reveal delay-200 w-full px-4 sm:px-0">
-              <a href="https://wa.me/628XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-4 px-8 md:px-12 py-5 md:py-6 bg-white text-black hover:bg-emerald-400 transition-all rounded-3xl font-black text-xl md:text-2xl shadow-xl hover:-translate-y-2">
+              <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-4 px-8 md:px-12 py-5 md:py-6 bg-white text-black hover:bg-emerald-400 transition-all rounded-3xl font-black text-xl md:text-2xl shadow-xl hover:-translate-y-2">
                 <MessageCircle className="w-7 h-7 md:w-8 md:h-8" />
                 WhatsApp
               </a>
             </div>
             
             <div className="reveal delay-300 flex flex-wrap justify-center gap-4 md:gap-6 mt-12 md:mt-16">
-              <a href="https://wa.me/628XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
+              <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
                 <MessageCircle className="w-6 h-6 md:w-8 md:h-8" />
               </a>
-              <a href="https://instagram.com/akunanda" target="_blank" rel="noopener noreferrer" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
+              <a href="https://instagram.com/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
                 <Instagram className="w-6 h-6 md:w-8 md:h-8" />
               </a>
-              <a href="mailto:halo@emailanda.com" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
+              <a href="mailto:kiratamakreatif@gmail.com" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
                 <Mail className="w-6 h-6 md:w-8 md:h-8" />
               </a>
-              <a href="https://lynkid.id/akunanda" target="_blank" rel="noopener noreferrer" className="px-5 md:px-6 py-4 md:py-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md font-black italic text-base md:text-xl flex items-center justify-center">
+              <a href="https://lynk.id/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="px-5 md:px-6 py-4 md:py-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md font-black italic text-base md:text-xl flex items-center justify-center">
                 LYNK.ID
               </a>
             </div>
@@ -495,7 +499,7 @@ const App = () => {
 
       {/* WhatsApp Floating Button */}
       <a 
-        href="https://wa.me/628XXXXXXXXX" 
+        href="https://wa.me/6285191249991" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 group flex items-center justify-center"
