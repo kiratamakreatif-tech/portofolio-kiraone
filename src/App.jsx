@@ -40,10 +40,10 @@ const App = () => {
     { id: 'home', label: 'Beranda' },
     { id: 'features', label: 'Keunggulan' },
     { id: 'portfolio', label: 'Portofolio' },
+    { id: 'shop', label: 'Beli Aplikasi' },
     { id: 'pricing', label: 'Harga' },
     { id: 'about', label: 'Tentang' },
-    { id: 'contact', label: 'Kontak' },
-    { id: 'shop', label: 'Beli Aplikasi' }
+    { id: 'contact', label: 'Kontak' }
   ];
 
   const shopProducts = [
@@ -709,9 +709,14 @@ const App = () => {
                   <ArrowRight className="w-6 h-6 ml-auto hidden md:block group-hover:translate-x-2 transition-transform" />
                 </a>
                 
-                <div className="grid grid-cols-2 sm:flex justify-stretch gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 justify-stretch gap-4">
                   <a href="https://instagram.com/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-3xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center">
                     <Instagram size={28} />
+                  </a>
+                  <a href="https://threads.net/@kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-3xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center group/threads">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
+                      <path d="M12.24 16.96C11.5165 16.9537 10.8358 16.637 10.37 16.09C9.72803 15.313 9.40871 14.3312 9.47 13.33C9.40871 12.3288 9.72803 11.3469 10.37 10.57C10.8358 10.023 11.5165 9.70626 12.24 9.7C12.9635 9.70626 13.6442 10.023 14.11 10.57C14.7519 11.3469 15.0713 12.3288 15.01 13.33C15.0713 14.3312 14.7519 15.313 14.11 16.09C13.6442 16.637 12.9635 16.9537 12.24 16.96ZM12.24 8.08C11.1963 8.08107 10.1834 8.44111 9.37 9.1C8.25708 9.99849 7.63319 11.3364 7.67 12.75C7.63212 14.1611 8.25413 15.4962 9.36 16.39C10.176 17.054 11.1923 17.4177 12.24 17.42C13.2877 17.4177 14.304 17.054 15.12 16.39C16.2258 15.4962 16.8479 14.1611 16.81 12.75C16.8468 11.3364 16.2229 9.99849 15.11 9.1C14.2966 8.44111 13.2837 8.08107 12.24 8.08Z"/><path d="M12.24 0C5.46 0 0 5.46 0 12.24C0 19.02 5.46 24.48 12.24 24.48C18.15 24.48 23.01 20.25 24.12 14.65C24.4416 13.064 24.5146 11.4429 24.336 9.84001C24.1306 8.23249 23.5358 6.70243 22.5925 5.35334C21.6491 4.00426 20.3845 2.87321 18.8851 2.03713C17.3857 1.20104 15.6946 0.683516 13.93 0.520011C13.37 0.440011 12.8 0.410011 12.24 0.410011V1.41001C12.7441 1.40867 13.2477 1.44857 13.75 1.53001C15.3411 1.68481 16.8647 2.16432 18.2144 2.93481C19.5641 3.7053 20.6983 4.74399 21.5375 5.97723C22.3768 7.21046 22.8988 8.60015 23.0664 10.0504C23.234 11.5006 23.0425 12.9678 22.505 14.35C21.5791 19.1417 17.3776 22.569 12.5 22.54C6.51 22.54 1.63 17.65 1.63 11.63C1.63 5.61 6.51 0.72 12.5 0.72C13.01 0.72 13.52 0.75 14.04 0.82C15.9392 1.09635 17.6832 1.99042 19 3.36C20.4079 4.88762 21.1932 6.89269 21.2 8.98001V12.11C21.189 12.9038 20.8659 13.6617 20.3 14.22C19.8631 14.6133 19.3039 14.8329 18.7249 14.8391C18.1459 14.8453 17.581 14.6377 17.1327 14.2541C16.6844 13.8706 16.3807 13.3353 16.2766 12.7456C16.1725 12.1558 16.2745 11.5492 16.5641 11.0357C16.8537 10.5222 17.3121 10.1348 17.856 9.94362C18.3998 9.75245 18.9958 9.76993 19.5358 9.99285C19.5398 9.99441 19.5438 9.99596 19.5478 9.99751C19.4678 7.72751 18.3378 5.6975 16.5278 4.3875C15.313 3.51522 13.8427 3.05597 12.34 3.07C9.37 3.07 6.94 5.51 6.94 8.47V14.16C6.93893 15.2037 7.29897 16.2166 7.95782 17.03C8.85631 18.1429 10.1942 18.7668 11.6049 18.73C13.0157 18.7679 14.3508 18.1459 15.2449 17.04C16.0337 16.0822 16.4251 14.8712 16.34 13.65C16.5939 14.5165 17.1492 15.2638 17.9158 15.7681C18.6823 16.2724 19.6139 16.5024 20.556 16.42C21.413 16.35 22.253 15.93 22.843 15.24C23.5937 14.3642 24 13.2458 24 12.09V8.98001C24.016 6.13645 22.9238 3.4 20.97 1.4C18.8413 -0.528484 16.0354 -1.48803 13.25 -1.24L12.24 0ZM13.04 14.8V8.34C13.04 7.94 13.43 7.6 13.92 7.6C14.41 7.6 14.8 7.94 14.8 8.34V14.8C14.8 15.2 14.41 15.54 13.92 15.54C13.43 15.54 13.04 15.2 13.04 14.8Z" />
+                    </svg>
                   </a>
                   <a href="mailto:kiratamakreatif@gmail.com" className="p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-3xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center">
                     <Mail size={28} />
