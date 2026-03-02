@@ -474,8 +474,13 @@ const App = () => {
                   <div className="p-4 md:p-6">
                     <h3 className="text-sm md:text-lg font-bold text-white mb-1 md:mb-2 group-hover:text-emerald-400 transition-colors line-clamp-1">{project.title}</h3>
                     <p className="text-[10px] md:text-xs text-slate-400 mb-4 line-clamp-2">{project.description}</p>
-                    <div className="flex justify-end pt-2 border-t border-white/5">
-                      <a href={project.link} className="text-[10px] md:text-xs font-bold text-emerald-400 hover:text-white transition-colors">Lihat Detail →</a>
+                    <div className="flex justify-center pt-2 border-t border-white/5">
+                      <button 
+                        onClick={() => window.open(project.link, '_blank')}
+                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white py-2.5 rounded-xl text-[10px] md:text-xs font-bold transition-all shadow-lg shadow-emerald-900/20"
+                      >
+                        Demo
+                      </button>
                     </div>
                   </div>
                 </div>
