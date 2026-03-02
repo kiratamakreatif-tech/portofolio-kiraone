@@ -320,53 +320,53 @@ const App = () => {
 
       <div className="relative z-10">
         {/* Section 1: Hero */}
-        <section id="home" className="h-screen w-full snap-start snap-always flex items-center justify-center px-6 md:px-20 overflow-hidden relative selection:bg-emerald-500/40 selection:text-white">
+        <section id="home" className="h-screen w-full snap-start snap-always flex items-center justify-center px-4 md:px-20 overflow-hidden relative selection:bg-emerald-500/40 selection:text-white">
           
-          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-left relative z-10 py-10">
+          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 items-center text-center lg:text-left relative z-10 py-4 md:py-10">
             
             {/* Left Content (Dark Mode) */}
-            <div className="reveal space-y-6 md:space-y-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-400 backdrop-blur-md">
-                  <Code size={32} />
+            <div className="reveal space-y-4 md:space-y-8 order-2 lg:order-1">
+              <div className="flex items-center justify-center lg:justify-start gap-3 md:gap-4">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-xl md:rounded-2xl flex items-center justify-center text-emerald-400 backdrop-blur-md">
+                  <Code className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
-                <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-                  <span className="text-emerald-400 font-bold tracking-wider text-sm md:text-base uppercase">Google App Script</span>
+                <div className="px-3 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+                  <span className="text-emerald-400 font-bold tracking-wider text-[10px] md:text-base uppercase">Google App Script</span>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1]">
-                  Hentikan Kerja Lembur <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Urusan Admin & Laporan.</span>
+              <div className="space-y-2 md:space-y-4 px-2 md:px-0">
+                <h1 className="text-3xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.2] md:leading-[1.1]">
+                  Hentikan Lembur <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Urus Admin & Laporan.</span>
                 </h1>
-                <p className="text-base md:text-xl text-slate-400 max-w-lg leading-relaxed font-medium">
-                  Kami membantu bisnis Anda level up dengan mengubah Google Sheets biasa menjadi sistem otomasi yang cerdas. Lebih akurat, lebih cepat, dan tanpa biaya langganan bulanan.
+                <p className="text-xs md:text-xl text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
+                  Ubah Google Sheets menjadi sistem otomasi cerdas. Akurat, cepat, dan tanpa biaya langganan bulanan.
                 </p>
               </div>
 
-              {/* Action Buttons (Maintaining Emerald/Teal Theme) */}
-              <div className="flex flex-wrap gap-4 pt-2">
-                <button onClick={() => scrollToSection('portfolio')} className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-full font-bold transition-all shadow-lg shadow-emerald-900/40 hover:-translate-y-1 flex items-center gap-2">
-                  <Rocket className="w-5 h-5" />
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 pt-2">
+                <button onClick={() => scrollToSection('portfolio')} className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-full font-bold text-sm md:text-base transition-all shadow-lg shadow-emerald-900/40 flex items-center justify-center gap-2">
+                  <Rocket className="w-4 h-4 md:w-5 md:h-5" />
                   Mulai Sekarang
                 </button>
-                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold transition-all hover:-translate-y-1 backdrop-blur-md flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5 text-emerald-400" />
+                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold text-sm md:text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
+                  <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
                   Konsultasi Gratis
                 </a>
               </div>
             </div>
 
             {/* Right Content: Clean PNG Display */}
-            <div className="reveal delay-300 flex justify-center lg:justify-end relative">
+            <div className="reveal delay-300 flex justify-center lg:justify-end relative order-1 lg:order-2 h-40 md:h-auto">
               {/* Glow Effect behind image */}
-              <div className="absolute inset-0 bg-emerald-500/10 blur-[120px] rounded-full scale-110"></div>
+              <div className="absolute inset-0 bg-emerald-500/10 blur-[60px] md:blur-[120px] rounded-full scale-110"></div>
               
-              <div className="relative z-10 w-full max-w-[450px] lg:max-w-[650px]">
+              <div className="relative z-10 w-full max-w-[280px] md:max-w-[450px] lg:max-w-[650px]">
                 <img 
                   src={HeaderMockup} 
-                  className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-700" 
+                  className="w-full h-full object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-700" 
                   alt="KiraOne Preview" 
                 />
               </div>
@@ -520,26 +520,24 @@ const App = () => {
         </section>
 
         {/* Section 2.7: Harga */}
-        <section id="pricing" className="min-h-screen w-full snap-start snap-always flex flex-col justify-center py-20 px-4">
+        <section id="pricing" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-4 md:py-8 px-4 overflow-hidden relative">
           <div className="max-w-6xl mx-auto w-full">
-            <div className="reveal text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Pilihan Paket <span className="text-emerald-400">Harga</span></h2>
-              <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">Mulai optimasi bisnis Anda dengan investasi yang terjangkau.</p>
+            <div className="reveal text-center mb-6 md:mb-12">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Pilihan Paket <span className="text-emerald-400">Harga</span></h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-xs md:text-sm">Beli aplikasi siap pakai atau custom sesuai kebutuhan.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto px-2">
               {[
                 { 
-                  plan: 'Aplikasi Siap Pakai', 
+                  plan: 'Aplikasi Jadi', 
                   price: 'Mulai 39K', 
                   features: [
-                    'Satu Kali Bayar (Lifetime Access)',
-                    'Tutorial Penggunaan Lengkap',
-                    'Dukungan Update Gratis',
-                    'Cocok untuk Kebutuhan Umum',
-                    'Tanpa Batasan Penggunaan'
+                    'Satu Kali Bayar (Lifetime)',
+                    'Tutorial Penggunaan',
+                    'Dukungan Update Gratis'
                   ],
-                  btn: 'Lihat Koleksi Toko',
+                  btn: 'Ke Toko',
                   action: () => scrollToSection('shop'),
                   popular: false
                 },
@@ -547,41 +545,37 @@ const App = () => {
                   plan: 'Aplikasi Custom', 
                   price: 'Mulai 250K', 
                   features: [
-                    'Fitur Sesuai Kebutuhan Bisnis',
-                    'Konsultasi Alur Kerja Khusus',
-                    'Integrasi Google Sheets & Gmail',
-                    'Dashboard Visual Interaktif',
-                    'Dukungan Teknis Prioritas'
+                    'Fitur Sesuai Kebutuhan',
+                    'Konsultasi Alur Khusus',
+                    'Dukungan Prioritas'
                   ],
-                  note: 'Minimal Investasi: Rp 200.000,-',
-                  btn: 'Chat Konsultasi Sekarang',
+                  note: 'Min Investasi: Rp 200rb',
+                  btn: 'Chat Konsultasi',
                   action: () => window.open('https://wa.me/6285191249991', '_blank'),
                   popular: true
                 }
               ].map((tier, i) => (
-                <div key={i} className={`reveal p-8 rounded-[2.5rem] border transition-all duration-500 flex flex-col ${
+                <div key={i} className={`reveal p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] border flex flex-col items-center text-center ${
                   tier.popular 
-                    ? 'bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border-emerald-500 shadow-2xl shadow-emerald-500/10 scale-105 z-10' 
-                    : 'bg-white/5 border-white/10 hover:border-white/20'
+                    ? 'bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border-emerald-500 shadow-xl' 
+                    : 'bg-white/5 border-white/10'
                 }`}>
-                  {tier.popular && <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-4 inline-block">Paling Banyak Dipilih</span>}
-                  <h3 className="text-2xl font-bold text-white mb-2">{tier.plan}</h3>
-                  <div className="text-4xl font-black text-emerald-400 mb-2">{tier.price}</div>
-                  {tier.note && <div className="text-xs font-bold text-emerald-400/60 mb-6 italic">{tier.note}</div>}
-                  <ul className="space-y-4 mb-10 flex-grow">
+                  <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{tier.plan}</h3>
+                  <div className="text-2xl md:text-4xl font-black text-emerald-400 mb-4">{tier.price}</div>
+                  <ul className="space-y-2 mb-6 flex-grow">
                     {tier.features.map((f, j) => (
-                      <li key={j} className="flex gap-3 text-slate-300 text-sm">
-                        <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
+                      <li key={j} className="flex items-center gap-2 text-slate-300 text-[10px] md:text-sm">
+                        <CheckCircle2 size={14} className="text-emerald-500" />
                         {f}
                       </li>
                     ))}
                   </ul>
                   <button 
                     onClick={tier.action}
-                    className={`w-full py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 ${
+                    className={`w-full py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-xs md:text-base transition-all ${
                       tier.popular 
-                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-900/40' 
-                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/40' 
+                        : 'bg-white/10 text-white'
                     }`}
                   >
                     {tier.btn}
@@ -593,24 +587,25 @@ const App = () => {
         </section>
 
         {/* Section 3: About */}
-        <section id="about" className="min-h-screen w-full snap-start snap-always flex flex-col justify-center py-20 px-4">
+        <section id="about" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-4 md:py-8 px-4 overflow-hidden relative">
           <div className="max-w-5xl mx-auto w-full">
-            <div className="reveal bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-16 shadow-2xl relative overflow-hidden group">
+            <div className="reveal bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 shadow-2xl relative overflow-hidden group">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full"></div>
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 relative z-10">Tentang <span className="text-emerald-400">Kami.</span></h2>
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-12 relative z-10 text-justify">
-                Kami adalah penyedia jasa pembuatan aplikasi dan website berbasis <strong>Google Apps Script</strong> yang membantu bisnis mengotomatiskan pekerjaan dengan cepat, efisien, dan terintegrasi langsung dengan Google Workspace seperti Sheets, Drive, dan Gmail. Kami mengubah proses manual menjadi sistem digital yang praktis mulai dari dashboard monitoring, generate dokumen massal, hingga workflow approval agar operasional bisnis Anda lebih rapi, hemat waktu, dan siap berkembang.
+              <h2 className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-8 relative z-10 text-center md:text-left">Tentang <span className="text-emerald-400">Kami.</span></h2>
+              <p className="text-xs md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12 relative z-10 text-justify md:text-left line-clamp-[8] md:line-clamp-none">
+                Penyedia jasa otomasi berbasis <strong>Google Apps Script</strong> yang membantu bisnis Anda bekerja lebih efisien. Kami mengubah proses manual menjadi sistem digital terintegrasi langsung dengan Google Workspace (Sheets, Drive, Gmail). Mulai dari dashboard monitoring hingga workflow approval, kami pastikan operasional bisnis Anda rapi, hemat waktu, dan tanpa biaya bulanan.
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
                 {[
                   { val: '10+', lab: 'Penjualan' },
                   { val: '20+', lab: 'Proyek' },
-                  { val: '10+', lab: 'Klien' }
+                  { val: '10+', lab: 'Klien' },
+                  { val: '24/7', lab: 'Support' }
                 ].map((stat, i) => (
-                  <div key={i} className="group/stat cursor-default">
-                    <h4 className="text-3xl md:text-5xl font-black text-emerald-400 mb-1 group-hover/stat:scale-110 transition-transform">{stat.val}</h4>
-                    <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{stat.lab}</p>
+                  <div key={i} className="bg-white/5 p-3 rounded-xl md:bg-transparent md:p-0">
+                    <h4 className="text-xl md:text-5xl font-black text-emerald-400 mb-0.5 md:mb-1">{stat.val}</h4>
+                    <p className="text-[8px] md:text-xs font-bold uppercase tracking-widest text-slate-500">{stat.lab}</p>
                   </div>
                 ))}
               </div>
