@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Smartphone, Monitor, Github, Linkedin, Mail, ExternalLink, Code, User, Briefcase, ChevronLeft, ChevronRight, ShoppingBag, ArrowRight, Instagram, MessageCircle, MapPin, Menu, X } from 'lucide-react';
+import { Smartphone, Monitor, Github, Linkedin, Mail, ExternalLink, Code, User, Briefcase, ChevronLeft, ChevronRight, ShoppingBag, ArrowRight, Instagram, MessageCircle, MapPin, Menu, X, Zap, Shield, Rocket, CheckCircle2, TrendingUp, Clock, CreditCard, Quote, AlertCircle, Lightbulb, PlayCircle, Star } from 'lucide-react';
 import LogoKiraOne from './assets/logo.png';
 import Produk1 from './assets/Produk1.png';
 import Produk2 from './assets/Produk2.jpg';
@@ -14,13 +14,36 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentTesti, setCurrentTesti] = useState(0);
+
+  const testimonials = [
+    {
+      masalah: "Laporan harian dikerjakan manual selama 3 jam tiap sore, sering ada salah hitung.",
+      solusi: "Otomasi rekap data dari Google Form langsung ke Dashboard Visual.",
+      dampak: "Waktu kerja terpangkas jadi 5 menit, akurasi laporan 100%.",
+      review: "Sangat membantu operasional tim kami!",
+      client: "Bapak Ahmad - Manajer Operasional"
+    },
+    {
+      masalah: "Kirim invoice ke 50 klien dilakukan satu-satu via email & WA.",
+      solusi: "Sistem generate PDF otomatis & kirim massal sekali klik.",
+      dampak: "Penagihan lebih cepat 2 hari dari biasanya.",
+      review: "Aplikasi yang sangat worth it untuk harganya.",
+      client: "Ibu Maya - Pemilik Bisnis Retail"
+    }
+  ];
+
+  const nextTesti = () => setCurrentTesti((prev) => (prev + 1) % testimonials.length);
+  const prevTesti = () => setCurrentTesti((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   
   const sectionsList = [
     { id: 'home', label: 'Beranda' },
+    { id: 'features', label: 'Keunggulan' },
     { id: 'portfolio', label: 'Portofolio' },
-    { id: 'shop', label: 'Beli Aplikasi' },
-    { id: 'about', label: 'Tentang Kami' },
-    { id: 'contact', label: 'Kontak' }
+    { id: 'pricing', label: 'Harga' },
+    { id: 'about', label: 'Tentang' },
+    { id: 'contact', label: 'Kontak' },
+    { id: 'shop', label: 'Beli Aplikasi' }
   ];
 
   const shopProducts = [
@@ -129,29 +152,29 @@ const App = () => {
     },
     {
       id: 4,
-      title: 'StudioAudio Edit',
-      category: ['Desktop'],
-      description: 'Software desktop untuk merekam dan mengedit audio multi-track.',
-      image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&q=80&w=800',
-      tech: ['C#', '.NET WPF'],
-      link: '#'
+      title: 'AturBos App',
+      category: ['Mobile', 'Desktop'],
+      description: 'Aplikasi Pencatatan Keuangan Pribadi dengan Metode 50/30/20 untuk mengatur budget, dompet, dan tabungan.',
+      image: Produk1,
+      tech: ['Budgeting', 'Analisis Grafik', 'Reminder Tagihan', 'Tabungan'],
+      link: 'https://lynk.id/kiratamakreatif/x3od72g1qv03'
     },
     {
       id: 5,
-      title: 'TanyaDokter App',
-      category: ['Mobile'],
-      description: 'Platform telemedis chat dan video call aman dengan dokter.',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
-      tech: ['Swift', 'WebRTC'],
-      link: '#'
+      title: 'Sertipat App',
+      category: ['Mobile', 'Desktop'],
+      description: 'Aplikasi Generate Sertifikat Event Otomatis, Kirim Email dan WA secara massal dengan desain Google Slide.',
+      image: Produk2,
+      tech: ['Google Slide', 'Email Massal', 'WhatsApp Massal'],
+      link: 'https://lynk.id/kiratamakreatif/gge9714y94dn'
     },
     {
       id: 6,
-      title: 'DataSync Manager',
-      category: ['Desktop'],
-      description: 'Alat sinkronisasi database antar server dengan penjadwalan.',
-      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800',
-      tech: ['JavaFX', 'MySQL'],
+      title: 'Kreatur App',
+      category: ['Mobile', 'Desktop'],
+      description: 'Aplikasi Plan Konten Media Sosial dengan Fitur Kalender, Drafting, dan Monitor Posting ads.',
+      image: Produk3,
+      tech: ['Plan Konten', 'Kalender Konten', 'Monitoring Engagement'],
       link: '#'
     }
   ];
@@ -224,18 +247,34 @@ const App = () => {
             <div className="hidden md:block">
               <div className="flex items-center space-x-2 lg:space-x-4">
                 {sectionsList.map(sec => (
+                  sec.id !== 'shop' && (
+                    <button 
+                      key={sec.id}
+                      onClick={() => scrollToSection(sec.id)} 
+                      className={`transition-all px-4 py-2 rounded-xl text-sm font-bold ${
+                        activeSection === sec.id 
+                          ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg shadow-emerald-500/20' 
+                          : 'text-slate-400 hover:text-emerald-400 hover:bg-white/5'
+                      }`}
+                    >
+                      {sec.label}
+                    </button>
+                  )
+                ))}
+                
+                {/* Special Beli Aplikasi Menu */}
+                {sectionsList.find(sec => sec.id === 'shop') && (
                   <button 
-                    key={sec.id}
-                    onClick={() => scrollToSection(sec.id)} 
-                    className={`transition-all px-4 py-2 rounded-xl text-sm font-bold ${
-                      activeSection === sec.id 
-                        ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg shadow-emerald-500/20' 
-                        : 'text-slate-400 hover:text-emerald-400 hover:bg-white/5'
+                    onClick={() => scrollToSection('shop')} 
+                    className={`transition-all px-5 py-2 rounded-xl text-sm font-bold border-2 ${
+                      activeSection === 'shop'
+                        ? 'text-white border-emerald-500 bg-emerald-500/10 shadow-lg shadow-emerald-500/20'
+                        : 'text-emerald-400 border-emerald-500/50 hover:border-emerald-400 hover:bg-emerald-500/5'
                     }`}
                   >
-                    {sec.label}
+                    Beli Aplikasi
                   </button>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -280,18 +319,18 @@ const App = () => {
 
       <div className="relative z-10">
         {/* Section 1: Hero */}
-        <section id="home" className="min-h-screen md:h-screen w-full snap-start snap-always flex flex-col items-center justify-center text-center px-4 py-20 overflow-hidden">
+        <section id="home" className="min-h-screen w-full snap-start snap-always flex flex-col items-center justify-center text-center px-4 py-20 overflow-hidden">
           <div className="max-w-6xl mx-auto flex flex-col items-center">
             <div className="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-md text-emerald-400 text-xs md:text-sm font-medium mb-6 md:mb-8">
               <Code size={14} className="md:w-4 md:h-4" />
               <span>Google App Script</span>
             </div>
             <h1 className="reveal delay-100 text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Solusi Digital <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Pekerjaanmu</span>
+            Hentikan Kerja Lembur Hanya untuk <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Urusan Admin & Laporan</span>
             </h1>
-            <p className="reveal delay-200 text-base md:text-xl text-slate-300 max-w-2xl mb-8 md:mb-10 px-4 leading-relaxed">
-              Ubah Pekerjaan Manual mu menjadi Pekerjaan Otomatis dengan Aplikasi Custom yang Murah.
+            <p className="reveal delay-200 text-base md:text-xl text-slate-300 max-w-3xl mb-8 md:mb-10 px-4 leading-relaxed">
+              Kami membantu bisnis Anda level up dengan mengubah Google Sheets biasa menjadi sistem otomasi yang cerdas. Lebih akurat, lebih cepat, dan tanpa biaya langganan bulanan.
             </p>
             <div className="reveal delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 w-full px-4 sm:px-0">
               <button onClick={() => scrollToSection('portfolio')} className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-2xl font-bold transition-all shadow-lg shadow-emerald-900/20 flex items-center justify-center gap-2 hover:-translate-y-1">
@@ -306,8 +345,64 @@ const App = () => {
           </div>
         </section>
 
+        {/* Section 1.5: Keunggulan */}
+        <section id="features" className="min-h-screen w-full snap-start snap-always flex flex-col justify-center py-20 px-4 bg-black/20">
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="reveal text-center mb-12 md:mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Mengapa Memilih <span className="text-emerald-400">KiraOne?</span></h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">Solusi otomasi cerdas yang dirancang khusus untuk efisiensi bisnis Anda tanpa biaya berlangganan.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {[
+                { 
+                  icon: <Zap className="w-8 h-8" />, 
+                  title: 'Otomasi Kilat', 
+                  desc: 'Ubah proses manual berjam-jam menjadi hitungan detik dengan integrasi Google Apps Script.' 
+                },
+                { 
+                  icon: <Shield className="w-8 h-8" />, 
+                  title: 'Keamanan Data', 
+                  desc: 'Data Anda tetap berada di infrastruktur Google Anda sendiri (Sheets/Drive). Anda punya kontrol penuh.' 
+                },
+                { 
+                  icon: <CreditCard className="w-8 h-8" />, 
+                  title: 'Tanpa Berlangganan', 
+                  desc: 'Sekali bayar untuk penggunaan selamanya. Tanpa biaya bulanan yang membebani operasional.' 
+                },
+                { 
+                  icon: <Rocket className="w-8 h-8" />, 
+                  title: 'Skalabilitas', 
+                  desc: 'Sistem yang fleksibel dan bisa dikembangkan seiring pertumbuhan kebutuhan bisnis Anda.' 
+                },
+                { 
+                  icon: <Clock className="w-8 h-8" />, 
+                  title: 'Hemat Waktu', 
+                  desc: 'Fokus pada strategi bisnis Anda, biarkan sistem kami yang menangani urusan administratif.' 
+                },
+                { 
+                  icon: <TrendingUp className="w-8 h-8" />, 
+                  title: 'Akurasi 100%', 
+                  desc: 'Minimalisir human-error dalam laporan dan perhitungan dengan sistem yang terkalibrasi.' 
+                }
+              ].map((feat, i) => (
+                <div key={i} className="reveal bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2rem] hover:border-emerald-500/30 transition-all group overflow-hidden relative">
+                  <div className="absolute -right-4 -bottom-4 text-emerald-500/5 group-hover:text-emerald-500/10 transition-colors">
+                    {feat.icon}
+                  </div>
+                  <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                    {feat.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">{feat.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{feat.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Section 2: Portfolio */}
-        <section id="portfolio" className="min-h-screen md:h-screen w-full snap-start snap-always flex flex-col justify-center py-16 md:py-20 px-4 overflow-hidden">
+        <section id="portfolio" className="min-h-screen w-full snap-start snap-always flex flex-col justify-center py-16 md:py-20 px-4">
           <div className="max-w-6xl mx-auto w-full flex flex-col h-full justify-center">
             <div className="reveal text-center mb-6 md:mb-8">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Aplikasi Kami</h2>
@@ -390,7 +485,7 @@ const App = () => {
         </section>
 
         {/* Section 2.5: Shop */}
-        <section id="shop" className="min-h-screen md:h-screen w-full snap-start snap-always flex flex-col items-center justify-center pt-24 pb-8 md:pt-28 md:pb-12 px-4 bg-white/5 relative z-10">
+        <section id="shop" className="min-h-screen w-full snap-start snap-always flex flex-col items-center justify-center pt-24 pb-8 md:pt-28 md:pb-12 px-4 bg-white/5 relative z-10">
           <div className="max-w-6xl mx-auto w-full flex flex-col justify-center h-full">
             <div className="reveal text-center mb-6 md:mb-10">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Beli Aplikasi</h2>
@@ -432,8 +527,81 @@ const App = () => {
           </div>
         </section>
 
+        {/* Section 2.7: Harga */}
+        <section id="pricing" className="min-h-screen w-full snap-start snap-always flex flex-col justify-center py-20 px-4">
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="reveal text-center mb-12 md:mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Pilihan Paket <span className="text-emerald-400">Harga</span></h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">Mulai optimasi bisnis Anda dengan investasi yang terjangkau.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {[
+                { 
+                  plan: 'Aplikasi Siap Pakai', 
+                  price: 'Mulai 39K', 
+                  features: [
+                    'Satu Kali Bayar (Lifetime Access)',
+                    'Tutorial Penggunaan Lengkap',
+                    'Dukungan Update Gratis',
+                    'Cocok untuk Kebutuhan Umum',
+                    'Tanpa Batasan Penggunaan'
+                  ],
+                  btn: 'Lihat Koleksi Toko',
+                  action: () => scrollToSection('shop'),
+                  popular: false
+                },
+                { 
+                  plan: 'Aplikasi Custom', 
+                  price: 'Mulai 250K', 
+                  features: [
+                    'Fitur Sesuai Kebutuhan Bisnis',
+                    'Konsultasi Alur Kerja Khusus',
+                    'Integrasi Google Sheets & Gmail',
+                    'Dashboard Visual Interaktif',
+                    'Dukungan Teknis Prioritas'
+                  ],
+                  note: 'Minimal Investasi: Rp 200.000,-',
+                  btn: 'Chat Konsultasi Sekarang',
+                  action: () => window.open('https://wa.me/6285191249991', '_blank'),
+                  popular: true
+                }
+              ].map((tier, i) => (
+                <div key={i} className={`reveal p-8 rounded-[2.5rem] border transition-all duration-500 flex flex-col ${
+                  tier.popular 
+                    ? 'bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border-emerald-500 shadow-2xl shadow-emerald-500/10 scale-105 z-10' 
+                    : 'bg-white/5 border-white/10 hover:border-white/20'
+                }`}>
+                  {tier.popular && <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-4 inline-block">Paling Banyak Dipilih</span>}
+                  <h3 className="text-2xl font-bold text-white mb-2">{tier.plan}</h3>
+                  <div className="text-4xl font-black text-emerald-400 mb-2">{tier.price}</div>
+                  {tier.note && <div className="text-xs font-bold text-emerald-400/60 mb-6 italic">{tier.note}</div>}
+                  <ul className="space-y-4 mb-10 flex-grow">
+                    {tier.features.map((f, j) => (
+                      <li key={j} className="flex gap-3 text-slate-300 text-sm">
+                        <CheckCircle2 size={18} className="text-emerald-500 shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <button 
+                    onClick={tier.action}
+                    className={`w-full py-4 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 ${
+                      tier.popular 
+                        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-900/40' 
+                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                    }`}
+                  >
+                    {tier.btn}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Section 3: About */}
-        <section id="about" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-20 px-4 overflow-hidden">
+        <section id="about" className="min-h-screen w-full snap-start snap-always flex flex-col justify-center py-20 px-4">
           <div className="max-w-5xl mx-auto w-full">
             <div className="reveal bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-16 shadow-2xl relative overflow-hidden group">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full"></div>
@@ -459,41 +627,106 @@ const App = () => {
         </section>
 
         {/* Section 4: Contact */}
-        <section id="contact" className="min-h-screen md:h-screen w-full snap-start snap-always flex flex-col justify-center items-center px-4 py-20 overflow-hidden">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="reveal inline-block mb-4 md:mb-6 px-6 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-xs md:text-sm tracking-widest uppercase">
-              Hubungi Kami
+        <section id="contact" className="min-h-screen w-full snap-start snap-always flex flex-col justify-start items-center px-4 py-32 bg-gradient-to-b from-black to-emerald-950/20">
+          <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start pb-60">
+            {/* Left Side: Testimonials Slider */}
+            <div className="reveal space-y-8">
+              <div className="inline-block px-6 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-xs tracking-widest uppercase">
+                Apa Kata Klien?
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black text-white leading-tight pr-4">Membantu Bisnis <br/><span className="text-emerald-400">Berkembang Lebih Cepat.</span></h2>
+              
+              <div className="relative group">
+                <div className="bg-white/5 border border-white/10 p-6 md:p-10 rounded-[2.5rem] relative min-h-[380px] md:min-h-[340px] flex flex-col justify-between hover:bg-emerald-400/5 transition-all">
+                  <Quote className="absolute top-8 right-8 text-emerald-500/10 w-16 h-16" />
+                  
+                  <div className="space-y-6">
+                    <div className="flex gap-3 text-sm md:text-base">
+                      <AlertCircle size={20} className="text-red-400 shrink-0 mt-1" />
+                      <p className="text-slate-300 italic leading-relaxed">"{testimonials[currentTesti].masalah}"</p>
+                    </div>
+                    <div className="flex gap-3 text-sm md:text-base">
+                      <Lightbulb size={20} className="text-emerald-400 shrink-0 mt-1" />
+                      <p className="text-emerald-300 font-medium leading-relaxed">{testimonials[currentTesti].solusi}</p>
+                    </div>
+                    <div className="flex gap-3 text-sm md:text-base">
+                      <TrendingUp size={20} className="text-teal-400 shrink-0 mt-1" />
+                      <p className="text-teal-200 font-bold leading-relaxed">{testimonials[currentTesti].dampak}</p>
+                    </div>
+                  </div>
+
+                  <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                      <p className="text-white font-black text-lg">{testimonials[currentTesti].client}</p>
+                      <div className="flex gap-1 mt-1">
+                        {[...Array(5)].map((_, j) => <Star key={j} size={12} className="fill-emerald-400 text-emerald-400" />)}
+                      </div>
+                    </div>
+                    <p className="text-emerald-400 text-sm md:text-base font-serif italic font-medium leading-relaxed">"{testimonials[currentTesti].review}"</p>
+                  </div>
+                </div>
+
+                {/* Slider Controls */}
+                <div className="flex gap-3 mt-6">
+                  <button 
+                    onClick={prevTesti}
+                    className="p-3 bg-white/5 hover:bg-emerald-500 hover:text-white text-emerald-400 rounded-2xl border border-white/10 transition-all active:scale-95"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button 
+                    onClick={nextTesti}
+                    className="p-3 bg-white/5 hover:bg-emerald-500 hover:text-white text-emerald-400 rounded-2xl border border-white/10 transition-all active:scale-95"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                  <div className="ml-auto flex items-center gap-2">
+                    {testimonials.map((_, i) => (
+                      <div 
+                        key={i} 
+                        className={`h-1.5 rounded-full transition-all duration-300 ${currentTesti === i ? 'w-8 bg-emerald-500' : 'w-2 bg-white/20'}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="reveal delay-75 flex items-center justify-center gap-2 mb-6 md:mb-8 text-slate-400 text-sm md:text-base">
-              <MapPin size={16} className="text-emerald-500 md:w-[18px] md:h-[18px]" />
-              <span className="font-medium tracking-wide">Jakarta Selatan, Indonesia</span>
-            </div>
-            <h2 className="reveal delay-100 text-4xl sm:text-6xl md:text-8xl font-black text-white mb-6 md:mb-8">Let's <span className="text-emerald-500">Talk.</span></h2>
-            <div className="reveal delay-200 w-full px-4 sm:px-0">
-              <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-4 px-8 md:px-12 py-5 md:py-6 bg-white text-black hover:bg-emerald-400 transition-all rounded-3xl font-black text-xl md:text-2xl shadow-xl hover:-translate-y-2">
-                <MessageCircle className="w-7 h-7 md:w-8 md:h-8" />
-                WhatsApp
-              </a>
-            </div>
-            
-            <div className="reveal delay-300 flex flex-wrap justify-center gap-4 md:gap-6 mt-12 md:mt-16">
-              <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
-                <MessageCircle className="w-6 h-6 md:w-8 md:h-8" />
-              </a>
-              <a href="https://instagram.com/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
-                <Instagram className="w-6 h-6 md:w-8 md:h-8" />
-              </a>
-              <a href="mailto:kiratamakreatif@gmail.com" className="p-4 md:p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md">
-                <Mail className="w-6 h-6 md:w-8 md:h-8" />
-              </a>
-              <a href="https://lynk.id/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="px-5 md:px-6 py-4 md:py-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl md:rounded-3xl transition-all border border-white/10 backdrop-blur-md font-black italic text-base md:text-xl flex items-center justify-center">
-                LYNK.ID
-              </a>
+
+            {/* Right Side: Contact Form/Call */}
+            <div className="reveal delay-200 text-center lg:text-left space-y-10">
+              <div className="space-y-4">
+                <div className="flex items-center justify-center lg:justify-start gap-2 text-slate-400 text-sm md:text-base">
+                  <MapPin size={16} className="text-emerald-500" />
+                  <span className="font-medium tracking-wide text-xs">Jakarta Selatan, Indonesia</span>
+                </div>
+                <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none">Let's <br/><span className="text-emerald-500">Talk.</span></h2>
+              </div>
+
+              <div className="space-y-6">
+                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center lg:justify-start gap-4 p-6 bg-white text-black hover:bg-emerald-400 transition-all rounded-[2rem] font-black text-xl md:text-2xl shadow-xl hover:-translate-y-2 group">
+                  <MessageCircle className="w-8 h-8" />
+                  Hubungi Kami
+                  <ArrowRight className="w-6 h-6 ml-auto hidden md:block group-hover:translate-x-2 transition-transform" />
+                </a>
+                
+                <div className="grid grid-cols-2 sm:flex justify-stretch gap-4">
+                  <a href="https://instagram.com/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-3xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center">
+                    <Instagram size={28} />
+                  </a>
+                  <a href="mailto:kiratamakreatif@gmail.com" className="p-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-3xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center">
+                    <Mail size={28} />
+                  </a>
+                  <a href="https://lynk.id/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="col-span-2 sm:col-auto px-6 py-5 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-3xl transition-all border border-white/10 backdrop-blur-md font-black italic text-xl flex items-center justify-center">
+                    LYNK.ID
+                  </a>
+                </div>
+              </div>
+
+              <footer className="pt-10 text-slate-600 text-[10px] font-bold tracking-widest uppercase">
+                &copy; {new Date().getFullYear()} KiraOne - Solusi Otomasi Digital
+              </footer>
             </div>
           </div>
-          <footer className="absolute bottom-4 md:bottom-8 w-full text-center text-slate-600 text-[10px] md:text-xs font-bold tracking-widest uppercase">
-            &copy; {new Date().getFullYear()} KiraOne Portofolio
-          </footer>
         </section>
       </div>
 
