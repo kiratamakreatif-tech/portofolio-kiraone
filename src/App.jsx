@@ -13,6 +13,7 @@ const App = () => {
   const [activeFilter, setActiveFilter] = useState('Semua');
   const [activeSection, setActiveSection] = useState('home');
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentShopPage, setCurrentShopPage] = useState(1);
   const itemsPerPage = 3;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentTesti, setCurrentTesti] = useState(0);
@@ -194,6 +195,9 @@ const App = () => {
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
   const currentProjects = filteredProjects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
+  const totalShopPages = Math.ceil(shopProducts.length / itemsPerPage);
+  const currentShopProducts = shopProducts; // Show all products for slide layout
+
   return (
     <div id="main-container" className="h-screen w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth relative bg-black text-slate-200 font-sans selection:bg-emerald-500/40 selection:text-white" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       
@@ -215,6 +219,13 @@ const App = () => {
         .reveal.active {
           opacity: 1;
           transform: translateY(0);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
 
@@ -337,11 +348,11 @@ const App = () => {
               
               <div className="space-y-2 md:space-y-4 px-2 md:px-0">
                 <h1 className="text-3xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.2] md:leading-[1.1]">
-                  Hentikan Lembur <br className="hidden md:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Urus Admin & Laporan.</span>
+                  Hentikan Kerja Lembur <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Urusan Admin & Laporan.</span>
                 </h1>
                 <p className="text-xs md:text-xl text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                  Ubah Google Sheets menjadi sistem otomasi cerdas. Akurat, cepat, dan tanpa biaya langganan bulanan.
+                  Kami membantu bisnis Anda level up dengan mengubah Google Sheets biasa menjadi sistem otomasi yang cerdas. Lebih akurat, lebih cepat, dan tanpa biaya langganan bulanan.
                 </p>
               </div>
 
@@ -359,14 +370,14 @@ const App = () => {
             </div>
 
             {/* Right Content: Clean PNG Display */}
-            <div className="reveal delay-300 flex justify-center lg:justify-end relative order-1 lg:order-2 h-40 md:h-auto">
+            <div className="reveal delay-300 flex justify-center lg:justify-end relative order-1 lg:order-2 h-44 md:h-auto overflow-visible">
               {/* Glow Effect behind image */}
-              <div className="absolute inset-0 bg-emerald-500/10 blur-[60px] md:blur-[120px] rounded-full scale-110"></div>
+              <div className="absolute inset-0 bg-emerald-500/10 blur-[40px] md:blur-[120px] rounded-full scale-110"></div>
               
-              <div className="relative z-10 w-full max-w-[280px] md:max-w-[450px] lg:max-w-[650px]">
+              <div className="relative z-10 w-full max-w-[320px] md:max-w-[450px] lg:max-w-[650px] scale-[1.35] md:scale-100 mt-4 md:mt-0">
                 <img 
                   src={HeaderMockup} 
-                  className="w-full h-full object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] md:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-700" 
+                  className="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] md:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-700" 
                   alt="KiraOne Preview" 
                 />
               </div>
@@ -452,10 +463,10 @@ const App = () => {
               ))}
             </div>
 
-            {/* Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 px-2">
-              {currentProjects.map((project, index) => (
-                <div key={project.id} className="reveal bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-500 group">
+            {/* Mobile/Desktop Grid/Slide */}
+            <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 px-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
+              {(window.innerWidth < 768 ? projects : currentProjects).map((project, index) => (
+                <div key={project.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-500 group">
                   <div className="relative h-32 md:h-40 overflow-hidden">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -471,14 +482,14 @@ const App = () => {
               ))}
             </div>
 
-            {/* Pagination */}
+            {/* Pagination for Portfolio */}
             {totalPages > 1 && (
-              <div className="reveal delay-200 flex justify-center items-center gap-4 mt-6">
-                <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all">
+              <div className="hidden md:flex reveal delay-200 justify-center items-center gap-4 mt-6">
+                <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10">
                   <ChevronLeft size={20} />
                 </button>
                 <span className="text-[10px] md:text-xs font-bold text-slate-400">{currentPage} / {totalPages}</span>
-                <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all">
+                <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10">
                   <ChevronRight size={20} />
                 </button>
               </div>
@@ -494,9 +505,10 @@ const App = () => {
               <p className="text-slate-400 text-xs md:text-sm">Siap pakai untuk mempercepat bisnis Anda.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 px-2">
-              {shopProducts.map((product) => (
-                <div key={product.id} className="reveal bg-black/40 border border-white/10 rounded-2xl md:rounded-[2rem] hover:border-emerald-500/50 transition-all group overflow-hidden">
+            {/* Mobile/Desktop Grid/Slide */}
+            <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 px-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
+              {(window.innerWidth < 768 ? shopProducts : currentShopProducts).map((product) => (
+                <div key={product.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-black/40 border border-white/10 rounded-2xl md:rounded-[2rem] hover:border-emerald-500/50 transition-all group overflow-hidden">
                   <div className="h-32 md:h-40 w-full overflow-hidden relative">
                     <img src={product.image} alt={product.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
@@ -516,6 +528,27 @@ const App = () => {
                 </div>
               ))}
             </div>
+
+            {/* Navigation for Desktop Grid */}
+            {totalShopPages > 1 && (
+              <div className="hidden md:flex reveal delay-200 justify-center items-center gap-4 mt-6">
+                <button 
+                  onClick={() => setCurrentShopPage(p => Math.max(1, p - 1))} 
+                  disabled={currentShopPage === 1} 
+                  className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <span className="text-[10px] md:text-xs font-bold text-slate-400">{currentShopPage} / {totalShopPages}</span>
+                <button 
+                  onClick={() => setCurrentShopPage(p => Math.min(totalShopPages, p + 1))} 
+                  disabled={currentShopPage === totalShopPages} 
+                  className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -530,14 +563,16 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto px-2">
               {[
                 { 
-                  plan: 'Aplikasi Jadi', 
+                  plan: 'Aplikasi Siap Pakai', 
                   price: 'Mulai 39K', 
                   features: [
-                    'Satu Kali Bayar (Lifetime)',
-                    'Tutorial Penggunaan',
-                    'Dukungan Update Gratis'
+                    'Satu Kali Bayar (Lifetime Access)',
+                    'Tutorial Penggunaan Lengkap',
+                    'Dukungan Update Gratis',
+                    'Cocok untuk Kebutuhan Umum',
+                    'Tanpa Batasan Penggunaan'
                   ],
-                  btn: 'Ke Toko',
+                  btn: 'Lihat Koleksi Toko',
                   action: () => scrollToSection('shop'),
                   popular: false
                 },
@@ -545,28 +580,38 @@ const App = () => {
                   plan: 'Aplikasi Custom', 
                   price: 'Mulai 250K', 
                   features: [
-                    'Fitur Sesuai Kebutuhan',
-                    'Konsultasi Alur Khusus',
-                    'Dukungan Prioritas'
+                    'Fitur Sesuai Kebutuhan Bisnis',
+                    'Konsultasi Alur Kerja Khusus',
+                    'Integrasi Google Sheets & Gmail',
+                    'Dashboard Visual Interaktif',
+                    'Dukungan Teknis Prioritas'
                   ],
-                  note: 'Min Investasi: Rp 200rb',
-                  btn: 'Chat Konsultasi',
+                  note: 'Minimal Investasi: Rp 200.000,-',
+                  btn: 'Chat Konsultasi Sekarang',
                   action: () => window.open('https://wa.me/6285191249991', '_blank'),
                   popular: true
                 }
               ].map((tier, i) => (
                 <div key={i} className={`reveal p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] border flex flex-col items-center text-center ${
                   tier.popular 
-                    ? 'bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border-emerald-500 shadow-xl' 
+                    ? 'bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border-emerald-500 shadow-xl relative' 
                     : 'bg-white/5 border-white/10'
                 }`}>
+                  {tier.popular && (
+                    <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2 opacity-80">
+                      PALING BANYAK DIPILIH
+                    </div>
+                  )}
                   <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{tier.plan}</h3>
-                  <div className="text-2xl md:text-4xl font-black text-emerald-400 mb-4">{tier.price}</div>
-                  <ul className="space-y-2 mb-6 flex-grow">
+                  <div className="text-2xl md:text-4xl font-black text-emerald-400 mb-1">{tier.price}</div>
+                  {tier.note && (
+                    <div className="text-[10px] text-emerald-400/60 mb-4 italic font-medium">{tier.note}</div>
+                  )}
+                  <ul className="space-y-2 mb-6 flex-grow text-left w-full px-4 md:px-8">
                     {tier.features.map((f, j) => (
                       <li key={j} className="flex items-center gap-2 text-slate-300 text-[10px] md:text-sm">
-                        <CheckCircle2 size={14} className="text-emerald-500" />
-                        {f}
+                        <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
+                        <span>{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -574,8 +619,8 @@ const App = () => {
                     onClick={tier.action}
                     className={`w-full py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-xs md:text-base transition-all ${
                       tier.popular 
-                        ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/40' 
-                        : 'bg-white/10 text-white'
+                        ? 'bg-[#009675] text-white shadow-lg shadow-emerald-900/40' 
+                        : 'bg-[#2a2a2a] text-white'
                     }`}
                   >
                     {tier.btn}
@@ -592,8 +637,8 @@ const App = () => {
             <div className="reveal bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 shadow-2xl relative overflow-hidden group">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full"></div>
               <h2 className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-8 relative z-10 text-center md:text-left">Tentang <span className="text-emerald-400">Kami.</span></h2>
-              <p className="text-xs md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12 relative z-10 text-justify md:text-left line-clamp-[8] md:line-clamp-none">
-                Penyedia jasa otomasi berbasis <strong>Google Apps Script</strong> yang membantu bisnis Anda bekerja lebih efisien. Kami mengubah proses manual menjadi sistem digital terintegrasi langsung dengan Google Workspace (Sheets, Drive, Gmail). Mulai dari dashboard monitoring hingga workflow approval, kami pastikan operasional bisnis Anda rapi, hemat waktu, dan tanpa biaya bulanan.
+              <p className="text-xs md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12 relative z-10 text-justify md:text-left md:line-clamp-none">
+                Kami adalah penyedia jasa pembuatan aplikasi dan website berbasis <strong>Google Apps Script</strong> yang membantu bisnis mengotomatiskan pekerjaan dengan cepat, efisien, dan terintegrasi langsung dengan Google Workspace seperti Sheets, Drive, dan Gmail. Kami mengubah proses manual menjadi sistem digital yang praktis mulai dari dashboard monitoring, generate dokumen massal, hingga workflow approval agar operasional bisnis Anda lebih rapi, hemat waktu, dan siap berkembang.
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
