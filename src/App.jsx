@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Smartphone, Monitor, Github, Linkedin, Mail, ExternalLink, Code, User, Briefcase, ChevronLeft, ChevronRight, ShoppingBag, ArrowRight, Instagram, MessageCircle, MapPin, Menu, X, Zap, Shield, Rocket, CheckCircle2, TrendingUp, Clock, CreditCard, Quote, AlertCircle, Lightbulb, PlayCircle, Star } from 'lucide-react';
 import LogoKiraOne from './assets/logo.png';
 import Produk1 from './assets/Produk1.png';
@@ -10,6 +11,7 @@ import Project3 from './assets/Project3.jpg';
 import HeaderMockup from './assets/header.png';
 
 const App = () => {
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('Semua');
   const [activeSection, setActiveSection] = useState('home');
   const [currentPage, setCurrentPage] = useState(1);
@@ -259,7 +261,7 @@ const App = () => {
             <div className="hidden md:block">
               <div className="flex items-center space-x-2 lg:space-x-4">
                 {sectionsList.map(sec => (
-                  sec.id !== 'shop' && (
+                  sec.id !== 'shop' && sec.id !== 'portfolio' && (
                     <button 
                       key={sec.id}
                       onClick={() => scrollToSection(sec.id)} 
@@ -273,6 +275,18 @@ const App = () => {
                     </button>
                   )
                 ))}
+
+                {/* Special Portofolio Full Page */}
+                <button
+                  onClick={() => navigate('/portfolio')}
+                  className={`transition-all px-4 py-2 rounded-xl text-sm font-bold ${
+                    activeSection === 'portfolio'
+                      ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg shadow-emerald-500/20'
+                      : 'text-slate-400 hover:text-emerald-400 hover:bg-white/5'
+                  }`}
+                >
+                  Portofolio
+                </button>
                 
                 {/* Special Beli Aplikasi Menu */}
                 {sectionsList.find(sec => sec.id === 'shop') && (
@@ -298,8 +312,13 @@ const App = () => {
                 <button 
                   key={sec.id}
                   onClick={() => {
-                    scrollToSection(sec.id);
-                    setIsMobileMenuOpen(false);
+                    if (sec.id === 'portfolio') {
+                      navigate('/portfolio');
+                      setIsMobileMenuOpen(false);
+                    } else {
+                      scrollToSection(sec.id);
+                      setIsMobileMenuOpen(false);
+                    }
                   }} 
                   className={`w-full text-left px-4 py-3 rounded-xl text-base font-bold transition-all ${
                     activeSection === sec.id 
