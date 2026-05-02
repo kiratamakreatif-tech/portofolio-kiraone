@@ -98,7 +98,7 @@ const App = () => {
           setActiveSection(entry.target.id);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1, rootMargin: '-80px 0px -75% 0px' });
 
     const sections = document.querySelectorAll('section[id]');
     sections.forEach(sec => sectionObserver.observe(sec));
@@ -111,16 +111,17 @@ const App = () => {
     };
   }, [activeFilter, currentPage]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
-    const container = document.getElementById('main-container');
-    if (element && container) {
-      const navHeight = 80; // h-20
-      const elementPosition = element.offsetTop;
-      const offsetPosition = elementPosition - navHeight;
-
-      container.scrollTo({
-        top: offsetPosition,
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
         behavior: 'smooth'
       });
     }
@@ -201,10 +202,14 @@ const App = () => {
   const currentShopProducts = shopProducts; // Show all products for slide layout
 
   return (
-    <div id="main-container" className="h-screen w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth relative bg-black text-slate-200 font-sans selection:bg-emerald-500/40 selection:text-white" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+    <div className="w-full overflow-x-hidden relative bg-black text-slate-200 font-sans selection:bg-emerald-500/40 selection:text-white">
       
       <style>{`
-        ::-webkit-scrollbar { display: none; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(52,211,153,0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(52,211,153,0.7); }
+        * { scrollbar-width: thin; scrollbar-color: rgba(52,211,153,0.35) transparent; }
         @keyframes float {
           0%, 100% { transform: translateY(0) translateX(0); }
           50% { transform: translateY(-20px) translateX(10px); }
@@ -334,23 +339,10 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Dot Navigation */}
-      <div className="fixed left-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4">
-        {sectionsList.map((sec) => (
-          <button key={sec.id} onClick={() => scrollToSection(sec.id)} className="group relative flex items-center justify-start">
-            <span className={`absolute left-8 px-2 py-1 rounded bg-black/60 backdrop-blur-md border border-white/10 text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap`}>
-              {sec.label}
-            </span>
-            <div className={`w-3 h-3 rounded-full transition-all duration-500 ease-out ${
-              activeSection === sec.id ? 'bg-emerald-400 scale-150 shadow-[0_0_15px_rgba(52,211,153,0.6)]' : 'bg-white/20 hover:bg-white/40 hover:scale-110'
-            }`} />
-          </button>
-        ))}
-      </div>
 
       <div className="relative z-10">
         {/* Section 1: Hero */}
-        <section id="home" className="h-screen w-full snap-start snap-always flex items-center justify-center px-4 md:px-20 overflow-hidden relative selection:bg-emerald-500/40 selection:text-white">
+        <section id="home" className="min-h-screen w-full flex items-center justify-center px-4 md:px-20 overflow-hidden relative selection:bg-emerald-500/40 selection:text-white">
           
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 items-center text-center lg:text-left relative z-10 py-4 md:py-10">
             
@@ -406,7 +398,7 @@ const App = () => {
         </section>
 
         {/* Section 1.5: Keunggulan */}
-        <section id="features" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-4 md:py-8 px-4 bg-black/20 overflow-hidden">
+        <section id="features" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 bg-black/20">
           <div className="max-w-6xl mx-auto w-full">
             <div className="reveal text-center mb-6 md:mb-10">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Mengapa Memilih <span className="text-emerald-400">KiraOne?</span></h2>
@@ -459,8 +451,8 @@ const App = () => {
         </section>
 
         {/* Section 2: Portfolio */}
-        <section id="portfolio" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-4 md:py-8 px-4 overflow-hidden">
-          <div className="max-w-6xl mx-auto w-full flex flex-col h-full justify-center">
+        <section id="portfolio" className="w-full flex flex-col justify-center py-20 md:py-28 px-4">
+          <div className="max-w-6xl mx-auto w-full flex flex-col">
             <div className="reveal text-center mb-4 md:mb-6">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Portofolio</h2>
             </div>
@@ -482,17 +474,22 @@ const App = () => {
               ))}
             </div>
 
-            {/* Mobile/Desktop Grid/Slide */}
+            {/* Project Grid */}
             <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 px-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
-              {(window.innerWidth < 768 ? projects : currentProjects).map((project, index) => (
+              {filteredProjects.map((project) => (
                 <div key={project.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-500 group">
-                  <div className="relative h-32 md:h-40 overflow-hidden">
+                  <div className="relative h-40 md:h-48 overflow-hidden">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                   </div>
                   <div className="p-4 md:p-6">
                     <h3 className="text-sm md:text-lg font-bold text-white mb-1 md:mb-2 group-hover:text-emerald-400 transition-colors line-clamp-1">{project.title}</h3>
                     <p className="text-[10px] md:text-xs text-slate-400 mb-4 line-clamp-2">{project.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {project.tech.slice(0, 3).map(t => (
+                        <span key={t} className="px-2 py-0.5 rounded-md text-[9px] font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">{t}</span>
+                      ))}
+                    </div>
                     <div className="flex justify-center pt-2 border-t border-white/5">
                       <button 
                         onClick={() => window.open(project.link, '_blank')}
@@ -505,25 +502,12 @@ const App = () => {
                 </div>
               ))}
             </div>
-
-            {/* Pagination for Portfolio */}
-            {totalPages > 1 && (
-              <div className="hidden md:flex reveal delay-200 justify-center items-center gap-4 mt-6">
-                <button onClick={() => setCurrentPage(p => Math.max(1, p - 1))} disabled={currentPage === 1} className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10">
-                  <ChevronLeft size={20} />
-                </button>
-                <span className="text-[10px] md:text-xs font-bold text-slate-400">{currentPage} / {totalPages}</span>
-                <button onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))} disabled={currentPage === totalPages} className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10">
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-            )}
           </div>
         </section>
 
         {/* Section 2.5: Shop */}
-        <section id="shop" className="h-screen w-full snap-start snap-always flex flex-col items-center justify-center py-4 md:py-8 px-4 bg-white/5 overflow-hidden">
-          <div className="max-w-6xl mx-auto w-full flex flex-col justify-center h-full">
+        <section id="shop" className="w-full flex flex-col items-center justify-center py-20 md:py-28 px-4 bg-white/5">
+          <div className="max-w-6xl mx-auto w-full flex flex-col">
             <div className="reveal text-center mb-6 md:mb-8">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">Beli Aplikasi</h2>
               <p className="text-slate-400 text-xs md:text-sm">Siap pakai untuk mempercepat bisnis Anda.</p>
@@ -577,7 +561,7 @@ const App = () => {
         </section>
 
         {/* Section 2.7: Harga */}
-        <section id="pricing" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-4 md:py-8 px-4 overflow-hidden relative">
+        <section id="pricing" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 relative">
           <div className="max-w-6xl mx-auto w-full">
             <div className="reveal text-center mb-6 md:mb-12">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Pilihan Paket <span className="text-emerald-400">Harga</span></h2>
@@ -656,7 +640,7 @@ const App = () => {
         </section>
 
         {/* Section 3: About */}
-        <section id="about" className="h-screen w-full snap-start snap-always flex flex-col justify-center py-4 md:py-8 px-4 overflow-hidden relative">
+        <section id="about" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 relative">
           <div className="max-w-5xl mx-auto w-full">
             <div className="reveal bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 shadow-2xl relative overflow-hidden group">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full"></div>
@@ -683,7 +667,7 @@ const App = () => {
         </section>
 
         {/* Section 4: Contact */}
-        <section id="contact" className="h-screen w-full snap-start snap-always flex flex-col justify-center items-center px-4 overflow-hidden bg-gradient-to-b from-black to-emerald-950/20">
+        <section id="contact" className="w-full flex flex-col justify-center items-center px-4 py-20 md:py-28 bg-gradient-to-b from-black to-emerald-950/20">
           <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Side: Testimonials Slider */}
             <div className="reveal space-y-4 md:space-y-6">

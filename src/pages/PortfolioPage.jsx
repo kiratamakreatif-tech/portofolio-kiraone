@@ -82,6 +82,36 @@ const projects = [
     link: '#',
     price: 'Rp 99.000',
   },
+  {
+    id: 7,
+    title: 'Nama Aplikasi 7',
+    category: ['Desktop', 'Mobile'],
+    type: 'Custom',
+    description: 'Deskripsi aplikasi ini. Jelaskan fitur utama dan manfaatnya untuk pengguna.',
+    image: null,
+    tech: ['Fitur 1', 'Fitur 2', 'Fitur 3'],
+    link: '#',
+  },
+  {
+    id: 8,
+    title: 'Nama Aplikasi 8',
+    category: ['Desktop', 'Mobile'],
+    type: 'Custom',
+    description: 'Deskripsi aplikasi ini. Jelaskan fitur utama dan manfaatnya untuk pengguna.',
+    image: null,
+    tech: ['Fitur 1', 'Fitur 2', 'Fitur 3'],
+    link: '#',
+  },
+  {
+    id: 9,
+    title: 'Nama Aplikasi 9',
+    category: ['Desktop', 'Mobile'],
+    type: 'Custom',
+    description: 'Deskripsi aplikasi ini. Jelaskan fitur utama dan manfaatnya untuk pengguna.',
+    image: null,
+    tech: ['Fitur 1', 'Fitur 2', 'Fitur 3'],
+    link: '#',
+  },
 ];
 
 const typeColors = {
@@ -260,11 +290,18 @@ const PortfolioPage = () => {
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-white/5 to-emerald-900/20 flex flex-col items-center justify-center gap-2">
+                      <Code size={32} className="text-emerald-500/40" />
+                      <span className="text-slate-600 text-xs font-medium">Gambar belum tersedia</span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                   {/* Badges */}
