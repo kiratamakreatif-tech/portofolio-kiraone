@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Smartphone, Monitor, Github, Linkedin, Mail, ExternalLink, Code, User, Briefcase, ChevronLeft, ChevronRight, ShoppingBag, ArrowRight, Instagram, MessageCircle, MapPin, Menu, X, Zap, Shield, Rocket, CheckCircle2, TrendingUp, Clock, CreditCard, Quote, AlertCircle, Lightbulb, PlayCircle, Star } from 'lucide-react';
 import LogoKiraOne from './assets/logo.png';
@@ -8,7 +8,7 @@ import Produk3 from './assets/Produk3.jpg';
 import Project1 from './assets/Project1.jpg';
 import Project2 from './assets/Project2.jpg';
 import Project3 from './assets/Project3.jpg';
-import HeaderMockup from './assets/header.png';
+import HeaderMockup from './assets/aplikasi.png';
 
 const App = () => {
   const navigate = useNavigate();
@@ -41,13 +41,7 @@ const App = () => {
   const prevTesti = () => setCurrentTesti((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   
   const sectionsList = [
-    { id: 'home', label: 'Beranda' },
-    { id: 'features', label: 'Keunggulan' },
-    { id: 'portfolio', label: 'Portofolio' },
-    { id: 'shop', label: 'Beli Aplikasi' },
-    { id: 'pricing', label: 'Harga' },
-    { id: 'about', label: 'Tentang' },
-    { id: 'contact', label: 'Kontak' }
+    { id: 'portfolio', label: 'Portofolio' }
   ];
 
   const shopProducts = [
@@ -265,75 +259,25 @@ const App = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="flex items-center space-x-2 lg:space-x-4">
-                {sectionsList.map(sec => (
-                  sec.id !== 'shop' && sec.id !== 'portfolio' && (
-                    <button 
-                      key={sec.id}
-                      onClick={() => scrollToSection(sec.id)} 
-                      className={`transition-all px-4 py-2 rounded-xl text-sm font-bold ${
-                        activeSection === sec.id 
-                          ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg shadow-emerald-500/20' 
-                          : 'text-slate-400 hover:text-emerald-400 hover:bg-white/5'
-                      }`}
-                    >
-                      {sec.label}
-                    </button>
-                  )
-                ))}
-
-                {/* Special Portofolio Full Page */}
                 <button
-                  onClick={() => navigate('/portfolio')}
-                  className={`transition-all px-4 py-2 rounded-xl text-sm font-bold ${
-                    activeSection === 'portfolio'
-                      ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500 shadow-lg shadow-emerald-500/20'
-                      : 'text-slate-400 hover:text-emerald-400 hover:bg-white/5'
-                  }`}
+                  onClick={() => navigate('/portofolio')}
+                  className="transition-all px-4 py-2 rounded-xl text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/30"
                 >
                   Portofolio
                 </button>
-                
-                {/* Special Beli Aplikasi Menu */}
-                {sectionsList.find(sec => sec.id === 'shop') && (
-                  <button 
-                    onClick={() => scrollToSection('shop')} 
-                    className={`transition-all px-5 py-2 rounded-xl text-sm font-bold border-2 ${
-                      activeSection === 'shop'
-                        ? 'text-white border-emerald-500 bg-emerald-500/10 shadow-lg shadow-emerald-500/20'
-                        : 'text-emerald-400 border-emerald-500/50 hover:border-emerald-400 hover:bg-emerald-500/5'
-                    }`}
-                  >
-                    Beli Aplikasi
-                  </button>
-                )}
               </div>
             </div>
           </div>
 
           {/* Mobile Navigation Dropdown */}
-          <div className={`md:hidden transition-all duration-300 ease-in-out border-t border-white/10 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 opacity-100 py-4' : 'max-h-0 opacity-0'}`}>
+          <div className={`md:hidden transition-all duration-300 ease-in-out border-t border-white/10 overflow-hidden ${isMobileMenuOpen ? 'max-h-24 opacity-100 py-4' : 'max-h-0 opacity-0'}`}>
             <div className="flex flex-col space-y-2 px-2 pb-3 pt-2">
-              {sectionsList.map(sec => (
-                <button 
-                  key={sec.id}
-                  onClick={() => {
-                    if (sec.id === 'portfolio') {
-                      navigate('/portfolio');
-                      setIsMobileMenuOpen(false);
-                    } else {
-                      scrollToSection(sec.id);
-                      setIsMobileMenuOpen(false);
-                    }
-                  }} 
-                  className={`w-full text-left px-4 py-3 rounded-xl text-base font-bold transition-all ${
-                    activeSection === sec.id 
-                      ? 'text-white bg-gradient-to-r from-emerald-500 to-teal-500' 
-                      : 'text-slate-400 hover:text-emerald-400 hover:bg-white/5'
-                  }`}
-                >
-                  {sec.label}
-                </button>
-              ))}
+              <button 
+                onClick={() => { navigate('/portofolio'); setIsMobileMenuOpen(false); }}
+                className="w-full text-left px-4 py-3 rounded-xl text-base font-bold transition-all bg-emerald-600 hover:bg-emerald-500 text-white"
+              >
+                Portofolio
+              </button>
             </div>
           </div>
         </div>
@@ -358,25 +302,40 @@ const App = () => {
               </div>
               
               <div className="space-y-2 md:space-y-4 px-2 md:px-0">
-                <h1 className="text-3xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.2] md:leading-[1.1]">
-                  Hentikan Kerja Lembur <br className="hidden md:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Urusan Admin & Laporan.</span>
+                <h1 className="text-2xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.3] md:leading-[1.2]">
+                  Otomasi Bisnis Cerdas: <br className="hidden md:block" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Solusi Sistem Sederhana dengan Biaya Terjangkau.</span>
                 </h1>
                 <p className="text-xs md:text-xl text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                  Kami membantu bisnis Anda level up dengan mengubah Google Sheets biasa menjadi sistem otomasi yang cerdas. Lebih akurat, lebih cepat, dan tanpa biaya langganan bulanan.
+                  dengan sistem sederhana, tanpa ribet.<br />
+                  Dari laporan project sampai bukti transfer — semua bisa otomatis & real-time.
                 </p>
               </div>
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 pt-2">
-                <button onClick={() => scrollToSection('portfolio')} className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-full font-bold text-sm md:text-base transition-all shadow-lg shadow-emerald-900/40 flex items-center justify-center gap-2">
-                  <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-                  Mulai Sekarang
-                </button>
-                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold text-sm md:text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
-                  <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
-                  Konsultasi Gratis
+                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-full font-bold text-sm md:text-base transition-all shadow-lg shadow-emerald-900/40 flex items-center justify-center gap-2">
+                  <i className="fa-brands fa-whatsapp text-base md:text-lg"></i>
+                  Konsultasi Gratis via WhatsApp
                 </a>
+                <button onClick={() => navigate('/portofolio')} className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold text-sm md:text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
+                  <Rocket className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
+                  Lihat Contoh Sistem
+                </button>
+              </div>
+
+              {/* 3 Mini Cards */}
+              <div className="grid grid-cols-3 gap-3 pt-2">
+                {[
+                  { icon: <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />, title: 'Konsultasi Gratis' },
+                  { icon: <CreditCard className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />, title: 'Harga Terjangkau' },
+                  { icon: <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />, title: 'Revisi Tanpa Batas' },
+                ].map((item, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-3 md:p-4 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all flex items-center gap-2">
+                    {item.icon}
+                    <span className="text-white font-bold text-[10px] md:text-xs">{item.title}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -385,10 +344,13 @@ const App = () => {
               {/* Glow Effect behind image */}
               <div className="absolute inset-0 bg-emerald-500/10 blur-[40px] md:blur-[120px] rounded-full scale-110"></div>
               
-              <div className="relative z-10 w-full max-w-[320px] md:max-w-[450px] lg:max-w-[650px] scale-[1.35] md:scale-100 mt-4 md:mt-0">
+              <div className="relative z-10 w-full max-w-[220px] md:max-w-[300px] lg:max-w-[380px] mt-4 md:mt-0"
+                style={{ borderRadius: '24px', overflow: 'hidden' }}
+              >
                 <img 
                   src={HeaderMockup} 
-                  className="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] md:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:scale-[1.02] transition-transform duration-700" 
+                  style={{ display: 'block' }}
+                  className="w-full h-auto hover:scale-[1.02] transition-transform duration-700" 
                   alt="KiraOne Preview" 
                 />
               </div>
@@ -397,60 +359,507 @@ const App = () => {
           </div>
         </section>
 
-        {/* Section 1.5: Keunggulan */}
-        <section id="features" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 bg-black/20">
+        {/* Section: Pain Point & Solution */}
+        <section className="w-full py-20 md:py-28 px-4 bg-black/30">
           <div className="max-w-6xl mx-auto w-full">
-            <div className="reveal text-center mb-6 md:mb-10">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Mengapa Memilih <span className="text-emerald-400">KiraOne?</span></h2>
-              <p className="text-slate-400 max-w-2xl mx-auto text-xs md:text-sm">Solusi otomasi cerdas yang dirancang khusus untuk efisiensi bisnis Anda tanpa biaya berlangganan.</p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
-              {[
-                { 
-                  icon: <Zap className="w-6 h-6 md:w-8 md:h-8" />, 
-                  title: 'Otomasi Kilat', 
-                  desc: 'Ubah proses manual menjadi hitungan detik.' 
-                },
-                { 
-                  icon: <Shield className="w-6 h-6 md:w-8 md:h-8" />, 
-                  title: 'Keamanan Data', 
-                  desc: 'Data tetap di infrastruktur Google Anda.' 
-                },
-                { 
-                  icon: <CreditCard className="w-6 h-6 md:w-8 md:h-8" />, 
-                  title: 'Tanpa Berlangganan', 
-                  desc: 'Sekali bayar untuk penggunaan selamanya.' 
-                },
-                { 
-                  icon: <Rocket className="w-6 h-6 md:w-8 md:h-8" />, 
-                  title: 'Skalabilitas', 
-                  desc: 'Sistem fleksibel mengikuti pertumbuhan bisnis.' 
-                },
-                { 
-                  icon: <Clock className="w-6 h-6 md:w-8 md:h-8" />, 
-                  title: 'Hemat Waktu', 
-                  desc: 'Fokus strategi, biarkan sistem menangani admin.' 
-                },
-                { 
-                  icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />, 
-                  title: 'Akurasi 100%', 
-                  desc: 'Minimalisir human-error dalam perhitungan.' 
-                }
-              ].map((feat, i) => (
-                <div key={i} className="reveal bg-white/5 backdrop-blur-md border border-white/10 p-4 md:p-6 rounded-2xl md:rounded-[2rem] hover:border-emerald-500/30 transition-all group overflow-hidden relative">
-                  <div className="w-10 h-10 md:w-14 md:h-14 bg-emerald-500/10 rounded-xl md:rounded-2xl flex items-center justify-center text-emerald-400 mb-3 md:mb-4 group-hover:scale-110 transition-transform">
-                    {feat.icon}
-                  </div>
-                  <h3 className="text-sm md:text-lg font-bold text-white mb-1 md:mb-2">{feat.title}</h3>
-                  <p className="text-[10px] md:text-xs text-slate-400 leading-relaxed">{feat.desc}</p>
+            {/* Top: Problem */}
+            <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start mb-16 md:mb-20">
+              {/* Left: Problem list */}
+              <div>
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-bold text-[10px] tracking-widest uppercase mb-5">
+                  <AlertCircle className="w-3 h-3" /> Masalah Umum
+                </span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-2 leading-snug">
+                  Masih mengalami <br className="hidden md:block" />
+                  <span className="text-red-400">hal seperti ini?</span>
+                </h2>
+                <p className="text-slate-500 text-sm mb-8">Jika iya, ini bukan masalah Anda saja — tapi ini juga tanda bahwa sistem Anda belum otomatis.</p>
+                <div className="space-y-3">
+                  {[
+                    'Laporan keuangan proyek masih manual & ribet',
+                    'Bukti transfer berantakan & harus dicek satu-satu',
+                    'Piutang sulit dipantau → telat nagih',
+                    'Data project tidak terstruktur',
+                    'Admin kerja berulang setiap hari',
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 bg-red-500/5 border border-red-500/10 rounded-2xl px-4 py-3 hover:border-red-500/20 transition-all">
+                      <div className="w-5 h-5 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="text-red-400 text-[9px] font-black">{i + 1}</span>
+                      </div>
+                      <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+              {/* Right: Insight */}
+              <div className="flex flex-col gap-5 lg:pt-14">
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                      <Lightbulb className="w-5 h-5 text-emerald-400" />
+                    </div>
+                    <h3 className="text-white font-bold text-base md:text-lg">Kabar baiknya, semua ini bisa diotomatisasi</h3>
+                  </div>
+                  <div className="space-y-3 text-slate-400 text-sm leading-relaxed">
+                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />Banyak bisnis sebenarnya tidak butuh sistem mahal</p>
+                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />Yang dibutuhkan adalah otomatisasi yang sesuai workflow mereka</p>
+                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />Dengan sistem yang disesuaikan dengan workflow bisnis Anda, proses manual bisa berubah jadi otomatis — tanpa perlu ganti sistem besar</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Divider */}
+            <div className="reveal flex items-center gap-4 mb-14 md:mb-16">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+              <span className="text-emerald-400 text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">Solusi</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+            </div>
+            {/* Bottom: Solution */}
+            <div className="reveal">
+              <div className="text-center mb-10">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-3">
+                  Solusi yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Kami Tawarkan</span>
+                </h2>
+                <p className="text-slate-400 text-sm max-w-2xl mx-auto">
+                  Sistem ini bukan mengganti cara kerja Anda, tapi <span className="text-white font-semibold">menyederhanakannya</span>. Semua dibuat custom sesuai kebutuhan Anda.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                {[
+                  { icon: <TrendingUp className="w-5 h-5" />, title: 'Otomatisasi Laporan Keuangan Project', desc: 'Laporan tersusun otomatis, akurat, dan real-time tanpa input manual.' },
+                  { icon: <Clock className="w-5 h-5" />, title: 'Monitoring Piutang & Reminder Otomatis', desc: 'Pantau tagihan dan kirim reminder ke klien secara otomatis.' },
+                  { icon: <CreditCard className="w-5 h-5" />, title: 'Pengelolaan Bukti Transfer Tanpa Input Manual', desc: 'Bukti transfer digenerate dan diarsip otomatis dari data transaksi.' },
+                  { icon: <Monitor className="w-5 h-5" />, title: 'Dashboard Bisnis Real-Time', desc: 'Pantau semua data bisnis dari satu layar, kapan saja.' },
+                  { icon: <Zap className="w-5 h-5" />, title: 'Workflow Operasional Lebih Rapi & Efisien', desc: 'Alur kerja tim lebih terstruktur dan minim human error.' },
+                ].map((sol, i) => (
+                  <div key={i} className={`group bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                      {sol.icon}
+                    </div>
+                    <h4 className="text-white font-bold text-sm mb-2 leading-snug">{sol.title}</h4>
+                    <p className="text-slate-500 text-xs leading-relaxed">{sol.desc}</p>
+                  </div>
+                ))}
+                <div className="group bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-500/60 transition-all duration-300 flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                  <div>
+                    <h4 className="text-white font-extrabold text-base mb-2">Mau sistem seperti ini?</h4>
+                    <p className="text-slate-400 text-xs leading-relaxed mb-5">Konsultasikan kebutuhan bisnis Anda sekarang — gratis, tanpa komitmen.</p>
+                  </div>
+                  <a
+                    href="https://wa.me/6285191249991"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30"
+                  >
+                    <i className="fa-brands fa-whatsapp text-sm"></i> Chat Sekarang
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Section 2: Portfolio */}
+        {/* Section: Apa Saja yang Anda Dapatkan */}
+        <section id="features" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 bg-black/20">
+          <div className="max-w-6xl mx-auto w-full">
+            <div className="reveal text-center mb-10 md:mb-14">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-4">Fitur Sistem</span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-3">Apa Saja yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Anda Dapatkan?</span></h2>
+              <p className="text-slate-400 max-w-2xl mx-auto text-xs md:text-sm">Semua sistem disesuaikan dengan workflow bisnis Anda <span className="text-emerald-400 font-semibold">(custom)</span></p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
+              {[
+                {
+                  icon: <TrendingUp className="w-6 h-6" />,
+                  title: 'Laporan Keuangan Project',
+                  items: [
+                    'Input transaksi per project',
+                    'Auto rekap biaya & profit',
+                    'Laporan per project / per periode',
+                  ],
+                },
+                {
+                  icon: <CreditCard className="w-6 h-6" />,
+                  title: 'Management Bukti Transfer Otomatis',
+                  items: [
+                    'Ambil dari email otomatis',
+                    'Rename sesuai format',
+                    'Auto masuk Google Drive',
+                  ],
+                },
+                {
+                  icon: <Briefcase className="w-6 h-6" />,
+                  title: 'Management Project Agensi',
+                  items: [
+                    'Tracking progress project',
+                    'Monitoring task tim',
+                    'Dashboard client & internal',
+                  ],
+                },
+                {
+                  icon: <Clock className="w-6 h-6" />,
+                  title: 'Management Piutang',
+                  items: [
+                    'Tracking jatuh tempo',
+                    'Reminder otomatis',
+                    'Monitoring pembayaran',
+                  ],
+                },
+              ].map((card, i) => (
+                <div key={i} className="reveal group bg-white/5 border border-white/10 rounded-3xl p-6 md:p-7 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-400 flex flex-col">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                    {card.icon}
+                  </div>
+                  <h3 className="text-white font-bold text-sm md:text-base mb-4 leading-snug">{card.title}</h3>
+                  <ul className="space-y-2.5 mt-auto">
+                    {card.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                        <span className="text-slate-400 text-xs leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div className="reveal mt-10 flex items-center justify-center">
+              <div className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <p className="text-slate-300 text-xs md:text-sm font-medium">
+                  Semua sistem disesuaikan dengan workflow bisnis Anda &mdash; <span className="text-emerald-400 font-bold">custom, bukan template</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section: Dampak Client */}
+        <section id="shop" className="w-full py-20 md:py-28 px-4 bg-black/30">
+          <div className="max-w-6xl mx-auto w-full">
+
+            {/* Header */}
+            <div className="reveal text-center mb-12 md:mb-16">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-4">Hasil Nyata</span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-3">
+                Bagaimana Dampak Client yang <br className="hidden md:block"/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Sudah Pakai Jasa Kami?</span>
+              </h2>
+            </div>
+
+            {/* 3 Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+              {/* Card 1 - Kontraktor */}
+              <div className="reveal group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-400 flex flex-col">
+                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/10 px-6 py-5 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                      <Briefcase className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Client</p>
+                      <h3 className="text-white font-extrabold text-base leading-tight">Kontraktor</h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col gap-5 flex-grow">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
+                      <span className="text-red-400 text-[10px] font-black uppercase tracking-widest">Sebelum</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed">Rekap project masih manual, data tersebar, dan bukti transaksi sering sulit ditemukan saat dibutuhkan.</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                      <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Sesudah</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed">Semua transaksi otomatis tercatat per project, bukti tersimpan rapi di Google Drive, dan laporan bisa dipantau real-time.</p>
+                  </div>
+                  <div className="mt-auto">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
+                      <span className="text-teal-400 text-[10px] font-black uppercase tracking-widest">Hasil</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {[
+                        'Owner langsung tahu project mana yang untung/rugi — tanpa cek manual atau tanya admin',
+                        'Rekap yang sebelumnya 2–3 jam/hari kini bisa diakses dalam <10 detik',
+                        'Risiko kesalahan input berkurang karena sistem sudah terotomatisasi',
+                      ].map((r, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="text-slate-300 text-xs leading-relaxed">{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2 - Admin Keuangan */}
+              <div className="reveal group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-400 flex flex-col">
+                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/10 px-6 py-5 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                      <CreditCard className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Client</p>
+                      <h3 className="text-white font-extrabold text-base leading-tight">Admin Keuangan</h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col gap-5 flex-grow">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
+                      <span className="text-red-400 text-[10px] font-black uppercase tracking-widest">Sebelum</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed">Bukti transfer harus dicek manual dari email, didownload satu per satu, lalu rename dan upload ke Drive secara manual.</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                      <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Sesudah</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed">Bukti transfer otomatis terambil dari email, langsung di-rename sesuai format, dan tersimpan rapi di Google Drive tanpa proses manual.</p>
+                  </div>
+                  <div className="mt-auto">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
+                      <span className="text-teal-400 text-[10px] font-black uppercase tracking-widest">Hasil</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {[
+                        'Proses yang sebelumnya 1–2 jam/hari kini berjalan otomatis tanpa intervensi',
+                        'Dokumen lebih rapi, mudah dicari, dan siap digunakan saat audit',
+                        'Mengurangi beban kerja admin secara signifikan',
+                      ].map((r, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="text-slate-300 text-xs leading-relaxed">{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 - Management Piutang */}
+              <div className="reveal group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-400 flex flex-col">
+                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/10 px-6 py-5 border-b border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                      <Clock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Client</p>
+                      <h3 className="text-white font-extrabold text-base leading-tight">Management Piutang</h3>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col gap-5 flex-grow">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
+                      <span className="text-red-400 text-[10px] font-black uppercase tracking-widest">Sebelum</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed">Piutang dicatat manual, sering lupa follow up, dan sulit memantau mana yang sudah jatuh tempo.</p>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
+                      <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Sesudah</span>
+                    </div>
+                    <p className="text-slate-400 text-xs leading-relaxed">Semua piutang tercatat otomatis, lengkap dengan tanggal jatuh tempo dan sistem reminder otomatis (email/WA).</p>
+                  </div>
+                  <div className="mt-auto">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
+                      <span className="text-teal-400 text-[10px] font-black uppercase tracking-widest">Hasil</span>
+                    </div>
+                    <ul className="space-y-2">
+                      {[
+                        'Owner langsung melihat daftar piutang aktif dan yang sudah jatuh tempo dalam satu dashboard',
+                        'Proses penagihan jadi lebih terstruktur dan tidak ada yang terlewat',
+                        'Arus kas lebih terkontrol karena penagihan lebih konsisten',
+                      ].map((r, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                          <span className="text-slate-300 text-xs leading-relaxed">{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Section: Kasus Anda Mirip */}
+        <section id="solusi" className="w-full py-20 md:py-28 px-4 bg-white/5">
+          <div className="max-w-6xl mx-auto w-full">
+
+            {/* Top: Kasus Mirip + Estimasi Biaya */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20 items-start">
+
+              {/* Left: Kasus Anda Mirip */}
+              <div className="reveal flex flex-col gap-5">
+                <div>
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-4">Situasi Anda</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
+                    Kasus Anda <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Mirip?</span>
+                  </h2>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3 p-4 bg-black/30 border border-white/10 rounded-2xl">
+                    <Lightbulb className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <p className="text-slate-300 text-sm leading-relaxed">Setiap bisnis punya workflow yang berbeda dan sistem yang dibuat juga harus menyesuaikan.</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-4 bg-black/30 border border-white/10 rounded-2xl">
+                    <Zap className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <p className="text-slate-300 text-sm leading-relaxed">Kita bisa bantu mapping solusi yang paling cocok untuk bisnis Anda.</p>
+                  </div>
+                </div>
+                <a
+                  href="https://wa.me/6285191249991"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 self-start px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-2xl transition-all shadow-lg shadow-emerald-900/30"
+                >
+                  <i className="fa-brands fa-whatsapp text-sm"></i>
+                  Konsultasi Gratis via WhatsApp
+                </a>
+              </div>
+
+              {/* Right: Estimasi Biaya */}
+              <div className="reveal flex flex-col gap-4">
+                <div>
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 font-bold text-[10px] tracking-widest uppercase mb-4">Investasi</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-1 leading-tight">Estimasi Biaya</h2>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { label: 'Custom Aplikasi', price: 'Mulai 600rb', icon: <Code className="w-4 h-4" /> },
+                    { label: 'Basic Automation', price: 'Mulai 800rb', icon: <Zap className="w-4 h-4" /> },
+                    { label: 'Advanced Automation', price: 'Mulai 1,5 Jt', icon: <Rocket className="w-4 h-4" /> },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between p-4 bg-black/30 border border-white/10 rounded-2xl hover:border-emerald-500/20 transition-all">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                          {item.icon}
+                        </div>
+                        <span className="text-slate-200 font-semibold text-sm">{item.label}</span>
+                      </div>
+                      <span className="text-emerald-400 font-black text-sm">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-slate-500 text-xs">Tersedia solusi sederhana untuk kebutuhan spesifik dengan biaya lebih terjangkau.</p>
+              </div>
+            </div>
+
+            {/* Bottom: Cara Kerja + CTA */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+
+              {/* Cara Kerja */}
+              <div className="reveal">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-5">Proses</span>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-6">Cara Kerja</h3>
+                <ol className="space-y-4">
+                  {[
+                    'Konsultasi kebutuhan bisnis Anda',
+                    'Mapping workflow & masalah',
+                    'Development sistem custom',
+                    'Testing & revisi',
+                    'Implementasi',
+                  ].map((step, i) => (
+                    <li key={i} className="flex items-center gap-4">
+                      <div className="w-8 h-8 rounded-full bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs shrink-0">
+                        {i + 1}
+                      </div>
+                      <span className="text-slate-300 text-sm">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+                <div className="mt-6 flex items-center gap-2 p-3 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <p className="text-slate-400 text-xs">Tidak perlu install software tambahan — cukup Google Workspace.</p>
+                </div>
+              </div>
+
+              {/* CTA Box */}
+              <div className="reveal">
+                <div className="bg-gradient-to-br from-emerald-900/30 to-teal-900/20 border border-emerald-500/20 rounded-3xl p-8 flex flex-col gap-5 h-full justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                    <MessageCircle className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-extrabold text-white mb-2 leading-tight">Konsultasikan Kebutuhan Bisnis Anda <span className="text-emerald-400">(Gratis)</span></h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">Tidak perlu langsung deal. Kita bahas dulu apakah proses bisnis Anda bisa diotomatisasi.</p>
+                  </div>
+                  <a
+                    href="https://wa.me/6285191249991"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-2xl transition-all shadow-lg shadow-emerald-900/30"
+                  >
+                    <i className="fa-brands fa-whatsapp text-sm"></i>
+                    Chat WhatsApp Sekarang
+                  </a>
+
+                  {/* Social Media Links */}
+                  <div className="border-t border-white/10 pt-4">
+                    <p className="text-slate-500 text-xs mb-3">Social Media Kami</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      <a
+                        href="https://wa.me/6285191249991"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                      >
+                        <i className="fa-brands fa-whatsapp text-base"></i>
+                        <span>WhatsApp</span>
+                      </a>
+                      <a
+                        href="https://www.threads.com/@kiratamakreatif"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                      >
+                        <i className="fa-brands fa-threads text-base"></i>
+                        <span>Threads</span>
+                      </a>
+                      <a
+                        href="https://www.instagram.com/kiratamakreatif/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                      >
+                        <i className="fa-brands fa-instagram text-base"></i>
+                        <span>Instagram</span>
+                      </a>
+                      <a
+                        href="mailto:kiratamakreatif@gmail.com"
+                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                      >
+                        <i className="fa-solid fa-envelope text-base"></i>
+                        <span>Email</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Section: Portfolio */}
         <section id="portfolio" className="w-full flex flex-col justify-center py-20 md:py-28 px-4">
           <div className="max-w-6xl mx-auto w-full flex flex-col">
             <div className="reveal text-center mb-4 md:mb-6">
@@ -476,7 +885,7 @@ const App = () => {
 
             {/* Project Grid */}
             <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 px-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
-              {filteredProjects.map((project) => (
+              {filteredProjects.slice(0, 3).map((project) => (
                 <div key={project.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-500 group">
                   <div className="relative h-40 md:h-48 overflow-hidden">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
@@ -502,246 +911,17 @@ const App = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* Section 2.5: Shop */}
-        <section id="shop" className="w-full flex flex-col items-center justify-center py-20 md:py-28 px-4 bg-white/5">
-          <div className="max-w-6xl mx-auto w-full flex flex-col">
-            <div className="reveal text-center mb-6 md:mb-8">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">Beli Aplikasi</h2>
-              <p className="text-slate-400 text-xs md:text-sm">Siap pakai untuk mempercepat bisnis Anda.</p>
-            </div>
-            
-            {/* Mobile/Desktop Grid/Slide */}
-            <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 px-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
-              {(window.innerWidth < 768 ? shopProducts : currentShopProducts).map((product) => (
-                <div key={product.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-black/40 border border-white/10 rounded-2xl md:rounded-[2rem] hover:border-emerald-500/50 transition-all group overflow-hidden">
-                  <div className="h-32 md:h-40 w-full overflow-hidden relative">
-                    <img src={product.image} alt={product.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  </div>
-                  <div className="p-4 md:p-6 lg:p-8">
-                    <h3 className="text-lg md:text-xl font-bold text-white mb-1 md:mb-2 line-clamp-1">{product.title}</h3>
-                    <div className="text-emerald-400 font-bold text-sm md:text-lg mb-3 md:mb-4">{product.price}</div>
-                    <p className="text-[10px] md:text-xs text-slate-400 line-clamp-2 md:line-clamp-3 mb-4 md:mb-6">{product.description}</p>
-                    <a 
-                      href={product.buyLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-3 md:py-4 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white rounded-xl text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 group/btn"
-                    >
-                      Beli <ArrowRight size={16} />
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Navigation for Desktop Grid */}
-            {totalShopPages > 1 && (
-              <div className="hidden md:flex reveal delay-200 justify-center items-center gap-4 mt-6">
-                <button 
-                  onClick={() => setCurrentShopPage(p => Math.max(1, p - 1))} 
-                  disabled={currentShopPage === 1} 
-                  className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                <span className="text-[10px] md:text-xs font-bold text-slate-400">{currentShopPage} / {totalShopPages}</span>
-                <button 
-                  onClick={() => setCurrentShopPage(p => Math.min(totalShopPages, p + 1))} 
-                  disabled={currentShopPage === totalShopPages} 
-                  className="p-2 rounded-xl bg-white/5 border border-white/10 text-white disabled:opacity-20 transition-all hover:bg-emerald-500/10"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Section 2.7: Harga */}
-        <section id="pricing" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 relative">
-          <div className="max-w-6xl mx-auto w-full">
-            <div className="reveal text-center mb-6 md:mb-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Pilihan Paket <span className="text-emerald-400">Harga</span></h2>
-              <p className="text-slate-400 max-w-2xl mx-auto text-xs md:text-sm">Beli aplikasi siap pakai atau custom sesuai kebutuhan.</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto px-2">
-              {[
-                { 
-                  plan: 'Aplikasi Siap Pakai', 
-                  price: 'Mulai 39K', 
-                  features: [
-                    'Satu Kali Bayar (Lifetime Access)',
-                    'Tutorial Penggunaan Lengkap',
-                    'Dukungan Update Gratis',
-                    'Cocok untuk Kebutuhan Umum',
-                    'Tanpa Batasan Penggunaan'
-                  ],
-                  btn: 'Lihat Koleksi Toko',
-                  action: () => scrollToSection('shop'),
-                  popular: false
-                },
-                { 
-                  plan: 'Aplikasi Custom', 
-                  price: 'Mulai 250K', 
-                  features: [
-                    'Fitur Sesuai Kebutuhan Bisnis',
-                    'Konsultasi Alur Kerja Khusus',
-                    'Integrasi Google Sheets & Gmail',
-                    'Dashboard Visual Interaktif',
-                    'Dukungan Teknis Prioritas'
-                  ],
-                  note: 'Minimal Investasi: Rp 200.000,-',
-                  btn: 'Chat Konsultasi Sekarang',
-                  action: () => window.open('https://wa.me/6285191249991', '_blank'),
-                  popular: true
-                }
-              ].map((tier, i) => (
-                <div key={i} className={`reveal p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] border flex flex-col items-center text-center ${
-                  tier.popular 
-                    ? 'bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border-emerald-500 shadow-xl relative' 
-                    : 'bg-white/5 border-white/10'
-                }`}>
-                  {tier.popular && (
-                    <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2 opacity-80">
-                      PALING BANYAK DIPILIH
-                    </div>
-                  )}
-                  <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{tier.plan}</h3>
-                  <div className="text-2xl md:text-4xl font-black text-emerald-400 mb-1">{tier.price}</div>
-                  {tier.note && (
-                    <div className="text-[10px] text-emerald-400/60 mb-4 italic font-medium">{tier.note}</div>
-                  )}
-                  <ul className="space-y-2 mb-6 flex-grow text-left w-full px-4 md:px-8">
-                    {tier.features.map((f, j) => (
-                      <li key={j} className="flex items-center gap-2 text-slate-300 text-[10px] md:text-sm">
-                        <CheckCircle2 size={14} className="text-emerald-500 shrink-0" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <button 
-                    onClick={tier.action}
-                    className={`w-full py-3 md:py-4 rounded-xl md:rounded-2xl font-bold text-xs md:text-base transition-all ${
-                      tier.popular 
-                        ? 'bg-[#009675] text-white shadow-lg shadow-emerald-900/40' 
-                        : 'bg-[#2a2a2a] text-white'
-                    }`}
-                  >
-                    {tier.btn}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Section 3: About */}
-        <section id="about" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 relative">
-          <div className="max-w-5xl mx-auto w-full">
-            <div className="reveal bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-[2.5rem] p-6 md:p-16 shadow-2xl relative overflow-hidden group">
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full"></div>
-              <h2 className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-8 relative z-10 text-center md:text-left">Tentang <span className="text-emerald-400">Kami.</span></h2>
-              <p className="text-xs md:text-xl text-slate-300 leading-relaxed mb-6 md:mb-12 relative z-10 text-justify md:text-left md:line-clamp-none">
-                Kami adalah penyedia jasa pembuatan aplikasi dan website berbasis <strong>Google Apps Script</strong> yang membantu bisnis mengotomatiskan pekerjaan dengan cepat, efisien, dan terintegrasi langsung dengan Google Workspace seperti Sheets, Drive, dan Gmail. Kami mengubah proses manual menjadi sistem digital yang praktis mulai dari dashboard monitoring, generate dokumen massal, hingga workflow approval agar operasional bisnis Anda lebih rapi, hemat waktu, dan siap berkembang.
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 relative z-10">
-                {[
-                  { val: '10+', lab: 'Penjualan' },
-                  { val: '20+', lab: 'Proyek' },
-                  { val: '10+', lab: 'Klien' },
-                  { val: '24/7', lab: 'Support' }
-                ].map((stat, i) => (
-                  <div key={i} className="bg-white/5 p-3 rounded-xl md:bg-transparent md:p-0">
-                    <h4 className="text-xl md:text-5xl font-black text-emerald-400 mb-0.5 md:mb-1">{stat.val}</h4>
-                    <p className="text-[8px] md:text-xs font-bold uppercase tracking-widest text-slate-500">{stat.lab}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 4: Contact */}
-        <section id="contact" className="w-full flex flex-col justify-center items-center px-4 py-20 md:py-28 bg-gradient-to-b from-black to-emerald-950/20">
-          <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Left Side: Testimonials Slider */}
-            <div className="reveal space-y-4 md:space-y-6">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase">
-                Apa Kata Klien?
-              </div>
-              <h2 className="text-2xl md:text-4xl font-black text-white leading-tight">Membantu Bisnis <br/><span className="text-emerald-400">Berkembang Lebih Cepat.</span></h2>
-              
-              <div className="relative group">
-                <div className="bg-white/5 border border-white/10 p-5 md:p-8 rounded-[2rem] relative min-h-[280px] md:min-h-[320px] flex flex-col justify-between hover:bg-emerald-400/5 transition-all">
-                  <Quote className="absolute top-6 right-6 text-emerald-500/10 w-12 h-12" />
-                  
-                  <div className="space-y-4">
-                    <div className="flex gap-3 text-xs md:text-sm">
-                      <AlertCircle size={16} className="text-red-400 shrink-0 mt-0.5" />
-                      <p className="text-slate-300 italic leading-relaxed">"{testimonials[currentTesti].masalah}"</p>
-                    </div>
-                    <div className="flex gap-3 text-xs md:text-sm">
-                      <Lightbulb size={16} className="text-emerald-400 shrink-0 mt-0.5" />
-                      <p className="text-emerald-300 font-medium leading-relaxed">{testimonials[currentTesti].solusi}</p>
-                    </div>
-                  </div>
-
-                  <div className="pt-6 border-t border-white/5 flex flex-col justify-between gap-3">
-                    <div>
-                      <p className="text-white font-black text-sm md:text-base">{testimonials[currentTesti].client}</p>
-                      <div className="flex gap-1 mt-0.5">
-                        {[...Array(5)].map((_, j) => <Star key={j} size={10} className="fill-emerald-400 text-emerald-400" />)}
-                      </div>
-                    </div>
-                    <p className="text-emerald-400 text-xs md:text-sm font-serif italic font-medium leading-relaxed line-clamp-2">"{testimonials[currentTesti].review}"</p>
-                  </div>
-                </div>
-
-                {/* Slider Controls */}
-                <div className="flex gap-2 mt-4">
-                  <button onClick={prevTesti} className="p-2 bg-white/5 hover:bg-emerald-500 text-emerald-400 hover:text-white rounded-xl border border-white/10 transition-all"><ChevronLeft size={20} /></button>
-                  <button onClick={nextTesti} className="p-2 bg-white/5 hover:bg-emerald-500 text-emerald-400 hover:text-white rounded-xl border border-white/10 transition-all"><ChevronRight size={20} /></button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side: Contact Form/Call */}
-            <div className="reveal delay-200 text-center lg:text-left space-y-6 md:space-y-8">
-              <div className="space-y-2">
-                <div className="flex items-center justify-center lg:justify-start gap-2 text-slate-400 text-[10px]">
-                  <MapPin size={12} className="text-emerald-500" />
-                  <span className="font-medium tracking-wide">Jakarta Selatan, Indonesia</span>
-                </div>
-                <h2 className="text-4xl md:text-6xl font-black text-white leading-none">Let's <br/><span className="text-emerald-500">Talk.</span></h2>
-              </div>
-
-              <div className="space-y-4">
-                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center lg:justify-start gap-4 p-5 bg-white text-black hover:bg-emerald-400 transition-all rounded-2xl font-black text-lg md:text-xl shadow-xl group">
-                  <MessageCircle className="w-6 h-6" />
-                  Hubungi Kami
-                  <ArrowRight className="w-5 h-5 ml-auto hidden md:block group-hover:translate-x-2 transition-transform" />
-                </a>
-                
-                <div className="grid grid-cols-4 gap-3">
-                  <a href="https://instagram.com/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center"><Instagram size={24} /></a>
-                  <a href="https://threads.net/@kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                      <path d="M12.24 16.96C11.5165 16.9537 10.8358 16.637 10.37 16.09C9.72803 15.313 9.40871 14.3312 9.47 13.33C9.40871 12.3288 9.72803 11.3469 10.37 10.57C10.8358 10.023 11.5165 9.70626 12.24 9.7C12.9635 9.70626 13.6442 10.023 14.11 10.57C14.7519 11.3469 15.0713 12.3288 15.01 13.33C15.0713 14.3312 14.7519 15.313 14.11 16.09C13.6442 16.637 12.9635 16.9537 12.24 16.96ZM12.24 8.08C11.1963 8.08107 10.1834 8.44111 9.37 9.1C8.25708 9.99849 7.63319 11.3364 7.67 12.75C7.63212 14.1611 8.25413 15.4962 9.36 16.39C10.176 17.054 11.1923 17.4177 12.24 17.42C13.2877 17.4177 14.304 17.054 15.12 16.39C16.2258 15.4962 16.8479 14.1611 16.81 12.75C16.8468 11.3364 16.2229 9.99849 15.11 9.1C14.2966 8.44111 13.2837 8.08107 12.24 8.08Z"/><path d="M12.24 0C5.46 0 0 5.46 0 12.24C0 19.02 5.46 24.48 12.24 24.48C18.15 24.48 23.01 20.25 24.12 14.65C24.4416 13.064 24.5146 11.4429 24.336 9.84001C24.1306 8.23249 23.5358 6.70243 22.5925 5.35334C21.6491 4.00426 20.3845 2.87321 18.8851 2.03713C17.3857 1.20104 15.6946 0.683516 13.93 0.520011C13.37 0.440011 12.8 0.410011 12.24 0.410011V1.41001C12.7441 1.40867 13.2477 1.44857 13.75 1.53001C15.3411 1.68481 16.8647 2.16432 18.2144 2.93481C19.5641 3.7053 20.6983 4.74399 21.5375 5.97723C22.3768 7.21046 22.8988 8.60015 23.0664 10.0504C23.234 11.5006 23.0425 12.9678 22.505 14.35C21.5791 19.1417 17.3776 22.569 12.5 22.54C6.51 22.54 1.63 17.65 1.63 11.63C1.63 5.61 6.51 0.72 12.5 0.72C13.01 0.72 13.52 0.75 14.04 0.82C15.9392 1.09635 17.6832 1.99042 19 3.36C20.4079 4.88762 21.1932 6.89269 21.2 8.98001V12.11C21.189 12.9038 20.8659 13.6617 20.3 14.22C19.8631 14.6133 19.3039 14.8329 18.7249 14.8391C18.1459 14.8453 17.581 14.6377 17.1327 14.2541C16.6844 13.8706 16.3807 13.3353 16.2766 12.7456C16.1725 12.1558 16.2745 11.5492 16.5641 11.0357C16.8537 10.5222 17.3121 10.1348 17.856 9.94362C18.3998 9.75245 18.9958 9.76993 19.5358 9.99285C19.5398 9.99441 19.5438 9.99596 19.5478 9.99751C19.4678 7.72751 18.3378 5.6975 16.5278 4.3875C15.313 3.51522 13.8427 3.05597 12.34 3.07C9.37 3.07 6.94 5.51 6.94 8.47V14.16C6.93893 15.2037 7.29897 16.2166 7.95782 17.03C8.85631 18.1429 10.1942 18.7668 11.6049 18.73C13.0157 18.7679 14.3508 18.1459 15.2449 17.04C16.0337 16.0822 16.4251 14.8712 16.34 13.65C16.5939 14.5165 17.1492 15.2638 17.9158 15.7681C18.6823 16.2724 19.6139 16.5024 20.556 16.42C21.413 16.35 22.253 15.93 22.843 15.24C23.5937 14.3642 24 13.2458 24 12.09V8.98001C24.016 6.13645 22.9238 3.4 20.97 1.4C18.8413 -0.528484 16.0354 -1.48803 13.25 -1.24L12.24 0ZM13.04 14.8V8.34C13.04 7.94 13.43 7.6 13.92 7.6C14.41 7.6 14.8 7.94 14.8 8.34V14.8C14.8 15.2 14.41 15.54 13.92 15.54C13.43 15.54 13.04 15.2 13.04 14.8Z" />
-                    </svg>
-                  </a>
-                  <a href="mailto:kiratamakreatif@gmail.com" className="p-4 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl transition-all border border-white/10 backdrop-blur-md flex items-center justify-center"><Mail size={24} /></a>
-                  <a href="https://lynk.id/kiratamakreatif" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 text-white hover:text-emerald-400 hover:bg-white/10 rounded-2xl transition-all border border-white/10 backdrop-blur-md font-black italic text-xs flex items-center justify-center">LYNK.ID</a>
-                </div>
-              </div>
-
-              <footer className="text-slate-600 text-[8px] font-bold tracking-widest uppercase">
-                &copy; {new Date().getFullYear()} KiraOne - Solusi Otomasi Digital
-              </footer>
+            {/* Lihat Lebih Banyak */}
+            <div className="reveal flex flex-col items-center gap-2 mt-8">
+              <p className="text-slate-500 text-sm">Masih banyak aplikasi lain yang sudah kami buat</p>
+              <button
+                onClick={() => navigate('/portofolio')}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-sm font-bold transition-all shadow-lg shadow-emerald-900/30"
+              >
+                Lihat Semua Portofolio
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
             </div>
           </div>
         </section>
@@ -758,7 +938,7 @@ const App = () => {
           Chat dengan kami
         </span>
         <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white rounded-2xl shadow-[0_10px_40px_rgba(16,185,129,0.4)] flex items-center justify-center transition-all duration-300 hover:-translate-y-2 active:scale-95 group-hover:rotate-6">
-          <MessageCircle className="w-7 h-7 md:w-8 md:h-8 text-white fill-white/20" />
+          <i className="fa-brands fa-whatsapp text-3xl md:text-4xl text-white"></i>
         </div>
       </a>
     </div>

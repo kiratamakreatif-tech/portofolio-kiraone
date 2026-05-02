@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, ExternalLink, Code, Smartphone, Monitor,
@@ -125,6 +125,10 @@ const PortfolioPage = () => {
   const [activeType, setActiveType] = useState('Semua');
   const [search, setSearch] = useState('');
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const filtered = projects.filter((p) => {
     const matchCat =
       activeFilter === 'Semua' || p.category.includes(activeFilter);
@@ -140,6 +144,11 @@ const PortfolioPage = () => {
   return (
     <div className="min-h-screen w-full bg-black text-slate-200 font-sans overflow-x-hidden selection:bg-emerald-500/40 selection:text-white">
       <style>{`
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(52,211,153,0.35); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(52,211,153,0.7); }
+        * { scrollbar-width: thin; scrollbar-color: rgba(52,211,153,0.35) transparent; }
         @keyframes float {
           0%, 100% { transform: translateY(0) translateX(0); }
           50% { transform: translateY(-20px) translateX(10px); }
@@ -181,7 +190,7 @@ const PortfolioPage = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all text-sm font-bold shadow-lg shadow-emerald-900/40"
           >
-            <MessageCircle size={16} />
+            <i className="fa-brands fa-whatsapp text-base"></i>
             <span className="hidden sm:inline">Konsultasi</span>
           </a>
         </div>
@@ -373,7 +382,7 @@ const PortfolioPage = () => {
                           className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-slate-400 hover:text-emerald-400 transition-all"
                           title="Tanya via WhatsApp"
                         >
-                          <MessageCircle size={14} />
+                          <i className="fa-brands fa-whatsapp text-sm"></i>
                         </a>
                       </>
                     ) : (
@@ -383,7 +392,7 @@ const PortfolioPage = () => {
                         rel="noopener noreferrer"
                         className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/5 hover:bg-emerald-500/10 border border-white/10 hover:border-emerald-500/30 text-slate-300 hover:text-emerald-400 rounded-xl text-xs font-bold transition-all"
                       >
-                        <MessageCircle size={13} />
+                        <i className="fa-brands fa-whatsapp text-xs"></i>
                         Tanya & Custom
                       </a>
                     )}
@@ -415,7 +424,7 @@ const PortfolioPage = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-2xl font-bold text-sm md:text-base transition-all shadow-xl shadow-emerald-900/40 relative z-10"
           >
-            <MessageCircle size={18} />
+            <i className="fa-brands fa-whatsapp text-lg"></i>
             Chat Konsultasi Gratis
           </a>
         </div>
