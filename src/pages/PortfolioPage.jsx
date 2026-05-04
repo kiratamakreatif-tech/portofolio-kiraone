@@ -11,6 +11,9 @@ import Produk3 from '../assets/Produk3.jpg';
 import Project1 from '../assets/Project1.jpg';
 import Project2 from '../assets/Project2.jpg';
 import Project3 from '../assets/Project3.jpg';
+import NewProject1 from '../assets/1.jpg';
+import NewProject2 from '../assets/2.jpg';
+import NewProject3 from '../assets/3.jpg';
 
 const projects = [
   {
@@ -84,32 +87,32 @@ const projects = [
   },
   {
     id: 7,
-    title: 'Nama Aplikasi 7',
+    title: 'Aplikasi Keuangan Kontruksi',
     category: ['Desktop', 'Mobile'],
     type: 'Custom',
-    description: 'Deskripsi aplikasi ini. Jelaskan fitur utama dan manfaatnya untuk pengguna.',
-    image: null,
-    tech: ['Fitur 1', 'Fitur 2', 'Fitur 3'],
+    description: 'Aplikasi Kelola keuangan dan administrasi proyek dengan tampilan web modern (PWA). Data disimpan di Google Sheets dengan fitur multi-user dan sistem login.',
+    image: NewProject1,
+    tech: ['Manajemen Transaksi Keuangan', 'Sistem Invoice & Bukti Pembayaran', 'Multi-User dengan Hak Akses', 'Manajemen Proyek & Agenda', 'Export Data (Excel & PDF)'],
     link: '#',
   },
   {
     id: 8,
-    title: 'Nama Aplikasi 8',
+    title: 'Aplikasi Customer Card Piutang',
     category: ['Desktop', 'Mobile'],
     type: 'Custom',
-    description: 'Deskripsi aplikasi ini. Jelaskan fitur utama dan manfaatnya untuk pengguna.',
-    image: null,
-    tech: ['Fitur 1', 'Fitur 2', 'Fitur 3'],
+    description: 'Aplikasi pencatatan keuangan proyek konstruksi berbasis web dengan sistem multi-proyek.',
+    image: NewProject2,
+    tech: ['Dashboard ringkasan keuangan & statistik real-time', 'Pencatatan transaksi pemasukan & pengeluaran', 'Account Receivable & manajemen piutang customer', 'Laporan keuangan dengan export Excel/PDF', 'Master data (Proyek/Perumahan, Customer, Bank, Kode Akun)'],
     link: '#',
   },
   {
     id: 9,
-    title: 'Nama Aplikasi 9',
+    title: 'Aplikasi Keuangan Project Agency',
     category: ['Desktop', 'Mobile'],
     type: 'Custom',
-    description: 'Deskripsi aplikasi ini. Jelaskan fitur utama dan manfaatnya untuk pengguna.',
-    image: null,
-    tech: ['Fitur 1', 'Fitur 2', 'Fitur 3'],
+    description: 'Aplikasi manajemen keuangan dan proyek berbasis Google Apps Script dengan dashboard interaktif untuk mengelola bisnis freelance/agency.',
+    image: NewProject3,
+    tech: ['Manajemen Proyek & Budget', 'Tracking Transaksi (Pemasukan & Pengeluaran)', 'Manajemen Freelancer & Gaji', 'Invoice & Klien', 'Dashboard Analitik & Laporan Keuangan'],
     link: '#',
   },
 ];
