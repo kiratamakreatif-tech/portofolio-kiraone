@@ -196,14 +196,14 @@ const App = () => {
   const currentShopProducts = shopProducts; // Show all products for slide layout
 
   return (
-    <div className="w-full overflow-x-hidden relative bg-black text-slate-200 font-sans selection:bg-emerald-500/40 selection:text-white">
+    <div className="w-full overflow-x-hidden relative bg-[#F7F4EE] text-gray-900 font-sans selection:bg-[#66B765]/30 selection:text-[#1a341a]">
       
       <style>{`
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(52,211,153,0.35); border-radius: 999px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(52,211,153,0.7); }
-        * { scrollbar-width: thin; scrollbar-color: rgba(52,211,153,0.35) transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(102,183,101,0.6); border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(102,183,101,0.9); }
+        * { scrollbar-width: thin; scrollbar-color: rgba(102,183,101,0.6) transparent; }
         @keyframes float {
           0%, 100% { transform: translateY(0) translateX(0); }
           50% { transform: translateY(-20px) translateX(10px); }
@@ -232,13 +232,13 @@ const App = () => {
 
       {/* Background Orbs */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-emerald-600/20 blur-[120px] animate-float"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-teal-600/20 blur-[120px] animate-float-delayed"></div>
-        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] rounded-full bg-green-600/20 blur-[100px] animate-float-slow"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#66B765]/10 blur-[120px] animate-float"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-[#77c577]/10 blur-[120px] animate-float-delayed"></div>
+        <div className="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] rounded-full bg-[#66B765]/10 blur-[100px] animate-float-slow"></div>
       </div>
 
       {/* Navbar */}
-      <nav className="fixed w-full z-40 bg-black/40 backdrop-blur-xl border-b border-white/10 shadow-lg">
+      <nav className="fixed w-full z-40 bg-gradient-to-r from-[#66B765] to-[#66B765] backdrop-blur-xl border-b border-[#4d9b4c] shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex-shrink-0 cursor-pointer" onClick={() => scrollToSection('home')}>
@@ -249,7 +249,7 @@ const App = () => {
             <div className="md:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 text-slate-400 hover:text-white transition-colors"
+                className="p-2 text-white hover:text-[#d8efd8] transition-colors"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -261,7 +261,7 @@ const App = () => {
               <div className="flex items-center space-x-2 lg:space-x-4">
                 <button
                   onClick={() => navigate('/portofolio')}
-                  className="transition-all px-4 py-2 rounded-xl text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/30"
+                  className="transition-all px-4 py-2 rounded-xl text-sm font-bold bg-white text-[#66B765] hover:bg-[#f0f9f0] shadow-lg"
                 >
                   Portofolio
                 </button>
@@ -270,11 +270,11 @@ const App = () => {
           </div>
 
           {/* Mobile Navigation Dropdown */}
-          <div className={`md:hidden transition-all duration-300 ease-in-out border-t border-white/10 overflow-hidden ${isMobileMenuOpen ? 'max-h-24 opacity-100 py-4' : 'max-h-0 opacity-0'}`}>
+          <div className={`md:hidden transition-all duration-300 ease-in-out border-t border-[#4d9b4c] overflow-hidden ${isMobileMenuOpen ? 'max-h-24 opacity-100 py-4' : 'max-h-0 opacity-0'}`}>
             <div className="flex flex-col space-y-2 px-2 pb-3 pt-2">
               <button 
                 onClick={() => { navigate('/portofolio'); setIsMobileMenuOpen(false); }}
-                className="w-full text-left px-4 py-3 rounded-xl text-base font-bold transition-all bg-emerald-600 hover:bg-emerald-500 text-white"
+                className="w-full text-left px-4 py-3 rounded-xl text-base font-bold transition-all bg-[#F7F4EE] text-[#66B765] hover:bg-[#f0f9f0]"
               >
                 Portofolio
               </button>
@@ -286,40 +286,40 @@ const App = () => {
 
       <div className="relative z-10">
         {/* Section 1: Hero */}
-        <section id="home" className="min-h-screen w-full flex items-center justify-center px-4 md:px-20 overflow-hidden relative selection:bg-emerald-500/40 selection:text-white">
+        <section id="home" className="min-h-screen w-full flex items-center justify-center px-4 md:px-20 overflow-hidden relative selection:bg-[#66B765]/30 selection:text-[#1a341a]">
           
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 items-center text-center lg:text-left relative z-10 py-4 md:py-10">
             
             {/* Left Content (Dark Mode) */}
             <div className="reveal space-y-4 md:space-y-8 order-2 lg:order-1">
               <div className="flex items-center justify-center lg:justify-start gap-3 md:gap-4">
-                <div className="w-10 h-10 md:w-16 md:h-16 bg-emerald-500/10 border border-emerald-500/20 rounded-xl md:rounded-2xl flex items-center justify-center text-emerald-400 backdrop-blur-md">
+                <div className="w-10 h-10 md:w-16 md:h-16 bg-[#f0f9f0] border border-[#b5dfb5] rounded-xl md:rounded-2xl flex items-center justify-center text-[#66B765] backdrop-blur-md">
                   <Code className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
-                <div className="px-3 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
-                  <span className="text-emerald-400 font-bold tracking-wider text-[10px] md:text-base uppercase">Google App Script</span>
+                <div className="px-3 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl bg-[#f0f9f0] border border-[#b5dfb5] backdrop-blur-md">
+                  <span className="text-[#66B765] font-bold tracking-wider text-[10px] md:text-base uppercase">Google App Script</span>
                 </div>
               </div>
               
               <div className="space-y-2 md:space-y-4 px-2 md:px-0">
-                <h1 className="text-2xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.3] md:leading-[1.2]">
+                <h1 className="text-2xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.3] md:leading-[1.2]">
                   Otomasi Bisnis Cerdas: <br className="hidden md:block" />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Solusi Sistem Sederhana dengan Biaya Terjangkau.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66B765] to-[#66B765]">Solusi Sistem Sederhana dengan Biaya Terjangkau.</span>
                 </h1>
-                <p className="text-xs md:text-xl text-slate-400 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                  dengan sistem sederhana, tanpa ribet.<br />
+                <p className="text-xs md:text-xl text-gray-600 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
+                  Dengan sistem sederhana, tanpa ribet.<br />
                   Dari laporan project sampai bukti transfer — semua bisa otomatis & real-time.
                 </p>
               </div>
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 pt-2">
-                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-full font-bold text-sm md:text-base transition-all shadow-lg shadow-emerald-900/40 flex items-center justify-center gap-2">
+                <a href="https://wa.me/6285191249991" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-[#66B765] to-[#66B765] hover:from-[#66B765] hover:to-[#66B765] text-white rounded-full font-bold text-sm md:text-base transition-all shadow-lg shadow-[#1a341a]/40 flex items-center justify-center gap-2">
                   <i className="fa-brands fa-whatsapp text-base md:text-lg"></i>
                   Konsultasi Gratis via WhatsApp
                 </a>
-                <button onClick={() => navigate('/portofolio')} className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-full font-bold text-sm md:text-base transition-all backdrop-blur-md flex items-center justify-center gap-2">
-                  <Rocket className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
+                <button onClick={() => navigate('/portofolio')} className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-[#F7F4EE] hover:bg-[#F7F4EE] text-gray-900 border border-gray-300 rounded-full font-bold text-sm md:text-base transition-all backdrop-blur-md flex items-center justify-center gap-2 shadow-md">
+                  <Rocket className="w-4 h-4 md:w-5 md:h-5 text-[#66B765]" />
                   Lihat Contoh Sistem
                 </button>
               </div>
@@ -327,13 +327,13 @@ const App = () => {
               {/* 3 Mini Cards */}
               <div className="grid grid-cols-3 gap-3 pt-2">
                 {[
-                  { icon: <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />, title: 'Konsultasi Gratis' },
-                  { icon: <CreditCard className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />, title: 'Harga Terjangkau' },
-                  { icon: <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />, title: 'Revisi Tanpa Batas' },
+                  { icon: <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-[#66B765]" />, title: 'Konsultasi Gratis' },
+                  { icon: <CreditCard className="w-4 h-4 md:w-5 md:h-5 text-[#66B765]" />, title: 'Harga Terjangkau' },
+                  { icon: <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-[#66B765]" />, title: 'Revisi Tanpa Batas' },
                 ].map((item, i) => (
-                  <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-3 md:p-4 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all flex items-center gap-2">
+                  <div key={i} className="bg-[#f0f9f0] border border-[#b5dfb5] rounded-2xl p-3 md:p-4 hover:border-[#77c577] hover:bg-[#d8efd8] transition-all flex items-center gap-2">
                     {item.icon}
-                    <span className="text-white font-bold text-[10px] md:text-xs">{item.title}</span>
+                    <span className="text-gray-900 font-bold text-[10px] md:text-xs">{item.title}</span>
                   </div>
                 ))}
               </div>
@@ -341,9 +341,6 @@ const App = () => {
 
             {/* Right Content: Clean PNG Display */}
             <div className="reveal delay-300 flex justify-center lg:justify-end relative order-1 lg:order-2 h-44 md:h-auto overflow-visible">
-              {/* Glow Effect behind image */}
-              <div className="absolute inset-0 bg-emerald-500/10 blur-[40px] md:blur-[120px] rounded-full scale-110"></div>
-              
               <div className="relative z-10 w-full max-w-[220px] md:max-w-[300px] lg:max-w-[380px] mt-4 md:mt-0"
                 style={{ borderRadius: '24px', overflow: 'hidden' }}
               >
@@ -360,68 +357,68 @@ const App = () => {
         </section>
 
         {/* Section: Pain Point & Solution */}
-        <section className="w-full py-20 md:py-28 px-4 bg-black/30">
+        <section className="w-full py-20 md:py-28 px-4 bg-[#F7F4EE]">
           <div className="max-w-6xl mx-auto w-full">
             {/* Top: Problem */}
             <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start mb-16 md:mb-20">
               {/* Left: Problem list */}
               <div>
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-bold text-[10px] tracking-widest uppercase mb-5">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765] font-bold text-[10px] tracking-widest uppercase mb-5">
                   <AlertCircle className="w-3 h-3" /> Masalah Umum
                 </span>
-                <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-2 leading-snug">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-2 leading-snug">
                   Masih mengalami <br className="hidden md:block" />
-                  <span className="text-red-400">hal seperti ini?</span>
+                  <span className="text-[#66B765]">hal seperti ini?</span>
                 </h2>
-                <p className="text-slate-500 text-sm mb-8">Jika iya, ini bukan masalah Anda saja — tapi ini juga tanda bahwa sistem Anda belum otomatis.</p>
+                <p className="text-gray-500 text-sm mb-8">Jika iya, ini bukan masalah Anda saja — tapi ini juga tanda bahwa sistem Anda belum otomatis.</p>
                 <div className="space-y-3">
                   {[
                     'Laporan keuangan proyek masih manual & ribet',
                     'Bukti transfer berantakan & harus dicek satu-satu',
-                    'Piutang sulit dipantau → telat nagih',
+                    'Piutang sulit dipantau ? telat nagih',
                     'Data project tidak terstruktur',
                     'Admin kerja berulang setiap hari',
                   ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3 bg-red-500/5 border border-red-500/10 rounded-2xl px-4 py-3 hover:border-red-500/20 transition-all">
-                      <div className="w-5 h-5 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center shrink-0 mt-0.5">
-                        <span className="text-red-400 text-[9px] font-black">{i + 1}</span>
+                    <div key={i} className="flex items-start gap-3 bg-[#f0f9f0] border border-[#b5dfb5] rounded-2xl px-4 py-3 hover:border-[#77c577] transition-all">
+                      <div className="w-5 h-5 rounded-full bg-[#d8efd8] border border-[#8ece8e] flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="text-[#66B765] text-[9px] font-black">{i + 1}</span>
                       </div>
-                      <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
+                      <span className="text-gray-700 text-sm leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
               {/* Right: Insight */}
               <div className="flex flex-col gap-5 lg:pt-14">
-                <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
+                <div className="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 shadow-lg">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                      <Lightbulb className="w-5 h-5 text-emerald-400" />
+                    <div className="w-10 h-10 rounded-2xl bg-[#f0f9f0] border border-[#b5dfb5] flex items-center justify-center">
+                      <Lightbulb className="w-5 h-5 text-[#66B765]" />
                     </div>
-                    <h3 className="text-white font-bold text-base md:text-lg">Kabar baiknya, semua ini bisa diotomatisasi</h3>
+                    <h3 className="text-gray-900 font-bold text-base md:text-lg">Kabar baiknya, semua ini bisa diotomatisasi</h3>
                   </div>
-                  <div className="space-y-3 text-slate-400 text-sm leading-relaxed">
-                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />Banyak bisnis sebenarnya tidak butuh sistem mahal</p>
-                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />Yang dibutuhkan adalah otomatisasi yang sesuai workflow mereka</p>
-                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />Dengan sistem yang disesuaikan dengan workflow bisnis Anda, proses manual bisa berubah jadi otomatis — tanpa perlu ganti sistem besar</p>
+                  <div className="space-y-3 text-gray-600 text-sm leading-relaxed">
+                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#66B765] shrink-0 mt-0.5" />Banyak bisnis sebenarnya tidak butuh sistem mahal</p>
+                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#66B765] shrink-0 mt-0.5" />Yang dibutuhkan adalah otomatisasi yang sesuai workflow mereka</p>
+                    <p className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-[#66B765] shrink-0 mt-0.5" />Dengan sistem yang disesuaikan dengan workflow bisnis Anda, proses manual bisa berubah jadi otomatis — tanpa perlu ganti sistem besar</p>
                   </div>
                 </div>
               </div>
             </div>
             {/* Divider */}
             <div className="reveal flex items-center gap-4 mb-14 md:mb-16">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
-              <span className="text-emerald-400 text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">Solusi</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#8ece8e] to-transparent" />
+              <span className="text-[#66B765] text-[10px] font-black tracking-widest uppercase px-4 py-2 rounded-full bg-[#f0f9f0] border border-[#b5dfb5]">Solusi</span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-[#8ece8e] to-transparent" />
             </div>
             {/* Bottom: Solution */}
             <div className="reveal">
               <div className="text-center mb-10">
-                <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-3">
-                  Solusi yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Kami Tawarkan</span>
+                <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">
+                  Solusi yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66B765] to-[#66B765]">Kami Tawarkan</span>
                 </h2>
-                <p className="text-slate-400 text-sm max-w-2xl mx-auto">
-                  Sistem ini bukan mengganti cara kerja Anda, tapi <span className="text-white font-semibold">menyederhanakannya</span>. Semua dibuat custom sesuai kebutuhan Anda.
+                <p className="text-gray-600 text-sm max-w-2xl mx-auto">
+                  Sistem ini bukan mengganti cara kerja Anda, tapi <span className="text-gray-900 font-semibold">menyederhanakannya</span>. Semua dibuat custom sesuai kebutuhan Anda.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
@@ -432,24 +429,24 @@ const App = () => {
                   { icon: <Monitor className="w-5 h-5" />, title: 'Dashboard Bisnis Real-Time', desc: 'Pantau semua data bisnis dari satu layar, kapan saja.' },
                   { icon: <Zap className="w-5 h-5" />, title: 'Workflow Operasional Lebih Rapi & Efisien', desc: 'Alur kerja tim lebih terstruktur dan minim human error.' },
                 ].map((sol, i) => (
-                  <div key={i} className={`group bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <div key={i} className={`group bg-white border border-gray-200 rounded-2xl p-5 md:p-6 hover:border-[#77c577] hover:bg-[#f0f9f0] transition-all duration-300 shadow-md ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+                    <div className="w-10 h-10 rounded-xl bg-[#f0f9f0] border border-[#b5dfb5] flex items-center justify-center text-[#66B765] mb-4 group-hover:scale-110 transition-transform duration-300">
                       {sol.icon}
                     </div>
-                    <h4 className="text-white font-bold text-sm mb-2 leading-snug">{sol.title}</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">{sol.desc}</p>
+                    <h4 className="text-gray-900 font-bold text-sm mb-2 leading-snug">{sol.title}</h4>
+                    <p className="text-gray-600 text-xs leading-relaxed">{sol.desc}</p>
                   </div>
                 ))}
-                <div className="group bg-gradient-to-br from-emerald-600/20 to-teal-600/10 border border-emerald-500/30 rounded-2xl p-5 md:p-6 hover:border-emerald-500/60 transition-all duration-300 flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+                <div className="group bg-gradient-to-br from-[#f0f9f0] to-[#f0f9f0] border border-[#8ece8e] rounded-2xl p-5 md:p-6 hover:border-[#77c577] transition-all duration-300 flex flex-col justify-between sm:col-span-2 lg:col-span-1 shadow-md">
                   <div>
-                    <h4 className="text-white font-extrabold text-base mb-2">Mau sistem seperti ini?</h4>
-                    <p className="text-slate-400 text-xs leading-relaxed mb-5">Konsultasikan kebutuhan bisnis Anda sekarang — gratis, tanpa komitmen.</p>
+                    <h4 className="text-gray-900 font-extrabold text-base mb-2">Mau sistem seperti ini?</h4>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5">Konsultasikan kebutuhan bisnis Anda sekarang — gratis, tanpa komitmen.</p>
                   </div>
                   <a
                     href="https://wa.me/6285191249991"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30"
+                    className="w-full py-3 bg-[#66B765] hover:bg-[#4d9b4c] text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#b5dfb5]"
                   >
                     <i className="fa-brands fa-whatsapp text-sm"></i> Chat Sekarang
                   </a>
@@ -460,12 +457,12 @@ const App = () => {
         </section>
 
         {/* Section: Apa Saja yang Anda Dapatkan */}
-        <section id="features" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 bg-black/20">
+        <section id="features" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 bg-[#F7F4EE]">
           <div className="max-w-6xl mx-auto w-full">
             <div className="reveal text-center mb-10 md:mb-14">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-4">Fitur Sistem</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-3">Apa Saja yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Anda Dapatkan?</span></h2>
-              <p className="text-slate-400 max-w-2xl mx-auto text-xs md:text-sm">Semua sistem disesuaikan dengan workflow bisnis Anda <span className="text-emerald-400 font-semibold">(custom)</span></p>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765] font-bold text-[10px] tracking-widest uppercase mb-4">Fitur Sistem</span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3">Apa Saja yang <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66B765] to-[#66B765]">Anda Dapatkan?</span></h2>
+              <p className="text-gray-600 max-w-2xl mx-auto text-xs md:text-sm">Semua sistem disesuaikan dengan workflow bisnis Anda <span className="text-[#66B765] font-semibold">(custom)</span></p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
               {[
@@ -506,16 +503,16 @@ const App = () => {
                   ],
                 },
               ].map((card, i) => (
-                <div key={i} className="reveal group bg-white/5 border border-white/10 rounded-3xl p-6 md:p-7 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-400 flex flex-col">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                <div key={i} className="reveal group bg-white border border-gray-200 rounded-3xl p-6 md:p-7 hover:border-[#77c577] hover:bg-[#f0f9f0] transition-all duration-400 flex flex-col shadow-md">
+                  <div className="w-12 h-12 rounded-2xl bg-[#f0f9f0] border border-[#b5dfb5] flex items-center justify-center text-[#66B765] mb-5 group-hover:scale-110 transition-transform duration-300">
                     {card.icon}
                   </div>
-                  <h3 className="text-white font-bold text-sm md:text-base mb-4 leading-snug">{card.title}</h3>
+                  <h3 className="text-gray-900 font-bold text-sm md:text-base mb-4 leading-snug">{card.title}</h3>
                   <ul className="space-y-2.5 mt-auto">
                     {card.items.map((item, j) => (
                       <li key={j} className="flex items-start gap-2.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
-                        <span className="text-slate-400 text-xs leading-relaxed">{item}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#66B765] mt-1.5 shrink-0" />
+                        <span className="text-gray-600 text-xs leading-relaxed">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -523,10 +520,10 @@ const App = () => {
               ))}
             </div>
             <div className="reveal mt-10 flex items-center justify-center">
-              <div className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <p className="text-slate-300 text-xs md:text-sm font-medium">
-                  Semua sistem disesuaikan dengan workflow bisnis Anda &mdash; <span className="text-emerald-400 font-bold">custom, bukan template</span>
+              <div className="inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-[#f0f9f0] border border-[#b5dfb5]">
+                <CheckCircle2 className="w-4 h-4 text-[#66B765] shrink-0" />
+                <p className="text-gray-700 text-xs md:text-sm font-medium">
+                  Semua sistem disesuaikan dengan workflow bisnis Anda &mdash; <span className="text-[#66B765] font-bold">custom, bukan template</span>
                 </p>
               </div>
             </div>
@@ -534,15 +531,15 @@ const App = () => {
         </section>
 
         {/* Section: Dampak Client */}
-        <section id="shop" className="w-full py-20 md:py-28 px-4 bg-black/30">
+        <section id="shop" className="w-full py-20 md:py-28 px-4 bg-[#F7F4EE]">
           <div className="max-w-6xl mx-auto w-full">
 
             {/* Header */}
             <div className="reveal text-center mb-12 md:mb-16">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-4">Hasil Nyata</span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-3">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765] font-bold text-[10px] tracking-widest uppercase mb-4">Hasil Nyata</span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3">
                 Bagaimana Dampak Client yang <br className="hidden md:block"/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Sudah Pakai Jasa Kami?</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66B765] to-[#66B765]">Sudah Pakai Jasa Kami?</span>
               </h2>
             </div>
 
@@ -550,37 +547,37 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
               {/* Card 1 - Kontraktor */}
-              <div className="reveal group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-400 flex flex-col">
-                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/10 px-6 py-5 border-b border-white/10">
+              <div className="reveal group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#77c577] transition-all duration-400 flex flex-col shadow-md">
+                <div className="bg-gradient-to-br from-[#f0f9f0] to-[#f0f9f0] px-6 py-5 border-b border-gray-200">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#d8efd8] border border-[#8ece8e] flex items-center justify-center text-[#66B765] shrink-0">
                       <Briefcase className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Client</p>
-                      <h3 className="text-white font-extrabold text-base leading-tight">Kontraktor</h3>
+                      <p className="text-[10px] text-[#66B765] font-bold uppercase tracking-widest">Client</p>
+                      <h3 className="text-gray-900 font-extrabold text-base leading-tight">Kontraktor</h3>
                     </div>
                   </div>
                 </div>
                 <div className="p-6 flex flex-col gap-5 flex-grow">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
-                      <span className="text-red-400 text-[10px] font-black uppercase tracking-widest">Sebelum</span>
+                      <div className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Sebelum</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed">Rekap project masih manual, data tersebar, dan bukti transaksi sering sulit ditemukan saat dibutuhkan.</p>
+                    <p className="text-gray-600 text-xs leading-relaxed">Rekap project masih manual, data tersebar, dan bukti transaksi sering sulit ditemukan saat dibutuhkan.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                      <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Sesudah</span>
+                      <div className="w-2 h-2 rounded-full bg-[#66B765] shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Sesudah</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed">Semua transaksi otomatis tercatat per project, bukti tersimpan rapi di Google Drive, dan laporan bisa dipantau real-time.</p>
+                    <p className="text-gray-600 text-xs leading-relaxed">Semua transaksi otomatis tercatat per project, bukti tersimpan rapi di Google Drive, dan laporan bisa dipantau real-time.</p>
                   </div>
                   <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
-                      <span className="text-teal-400 text-[10px] font-black uppercase tracking-widest">Hasil</span>
+                      <div className="w-2 h-2 rounded-full bg-[#66B765] shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Hasil</span>
                     </div>
                     <ul className="space-y-2">
                       {[
@@ -589,8 +586,8 @@ const App = () => {
                         'Risiko kesalahan input berkurang karena sistem sudah terotomatisasi',
                       ].map((r, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span className="text-slate-300 text-xs leading-relaxed">{r}</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#66B765] shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs leading-relaxed">{r}</span>
                         </li>
                       ))}
                     </ul>
@@ -599,37 +596,37 @@ const App = () => {
               </div>
 
               {/* Card 2 - Admin Keuangan */}
-              <div className="reveal group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-400 flex flex-col">
-                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/10 px-6 py-5 border-b border-white/10">
+              <div className="reveal group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#77c577] transition-all duration-400 flex flex-col shadow-md">
+                <div className="bg-gradient-to-br from-[#f0f9f0] to-[#f0f9f0] px-6 py-5 border-b border-gray-200">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#d8efd8] border border-[#8ece8e] flex items-center justify-center text-[#66B765] shrink-0">
                       <CreditCard className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Client</p>
-                      <h3 className="text-white font-extrabold text-base leading-tight">Admin Keuangan</h3>
+                      <p className="text-[10px] text-[#66B765] font-bold uppercase tracking-widest">Client</p>
+                      <h3 className="text-gray-900 font-extrabold text-base leading-tight">Admin Keuangan</h3>
                     </div>
                   </div>
                 </div>
                 <div className="p-6 flex flex-col gap-5 flex-grow">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
-                      <span className="text-red-400 text-[10px] font-black uppercase tracking-widest">Sebelum</span>
+                      <div className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Sebelum</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed">Bukti transfer harus dicek manual dari email, didownload satu per satu, lalu rename dan upload ke Drive secara manual.</p>
+                    <p className="text-gray-600 text-xs leading-relaxed">Bukti transfer harus dicek manual dari email, didownload satu per satu, lalu rename dan upload ke Drive secara manual.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                      <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Sesudah</span>
+                      <div className="w-2 h-2 rounded-full bg-[#66B765] shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Sesudah</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed">Bukti transfer otomatis terambil dari email, langsung di-rename sesuai format, dan tersimpan rapi di Google Drive tanpa proses manual.</p>
+                    <p className="text-gray-600 text-xs leading-relaxed">Bukti transfer otomatis terambil dari email, langsung di-rename sesuai format, dan tersimpan rapi di Google Drive tanpa proses manual.</p>
                   </div>
                   <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
-                      <span className="text-teal-400 text-[10px] font-black uppercase tracking-widest">Hasil</span>
+                      <div className="w-2 h-2 rounded-full bg-[#66B765] shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Hasil</span>
                     </div>
                     <ul className="space-y-2">
                       {[
@@ -638,8 +635,8 @@ const App = () => {
                         'Mengurangi beban kerja admin secara signifikan',
                       ].map((r, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span className="text-slate-300 text-xs leading-relaxed">{r}</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#66B765] shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs leading-relaxed">{r}</span>
                         </li>
                       ))}
                     </ul>
@@ -648,37 +645,37 @@ const App = () => {
               </div>
 
               {/* Card 3 - Management Piutang */}
-              <div className="reveal group bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-400 flex flex-col">
-                <div className="bg-gradient-to-br from-emerald-600/20 to-teal-600/10 px-6 py-5 border-b border-white/10">
+              <div className="reveal group bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-[#77c577] transition-all duration-400 flex flex-col shadow-md">
+                <div className="bg-gradient-to-br from-[#f0f9f0] to-[#f0f9f0] px-6 py-5 border-b border-gray-200">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#d8efd8] border border-[#8ece8e] flex items-center justify-center text-[#66B765] shrink-0">
                       <Clock className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Client</p>
-                      <h3 className="text-white font-extrabold text-base leading-tight">Management Piutang</h3>
+                      <p className="text-[10px] text-[#66B765] font-bold uppercase tracking-widest">Client</p>
+                      <h3 className="text-gray-900 font-extrabold text-base leading-tight">Management Piutang</h3>
                     </div>
                   </div>
                 </div>
                 <div className="p-6 flex flex-col gap-5 flex-grow">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-red-400 shrink-0" />
-                      <span className="text-red-400 text-[10px] font-black uppercase tracking-widest">Sebelum</span>
+                      <div className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Sebelum</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed">Piutang dicatat manual, sering lupa follow up, dan sulit memantau mana yang sudah jatuh tempo.</p>
+                    <p className="text-gray-600 text-xs leading-relaxed">Piutang dicatat manual, sering lupa follow up, dan sulit memantau mana yang sudah jatuh tempo.</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                      <span className="text-emerald-400 text-[10px] font-black uppercase tracking-widest">Sesudah</span>
+                      <div className="w-2 h-2 rounded-full bg-[#66B765] shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Sesudah</span>
                     </div>
-                    <p className="text-slate-400 text-xs leading-relaxed">Semua piutang tercatat otomatis, lengkap dengan tanggal jatuh tempo dan sistem reminder otomatis (email/WA).</p>
+                    <p className="text-gray-600 text-xs leading-relaxed">Semua piutang tercatat otomatis, lengkap dengan tanggal jatuh tempo dan sistem reminder otomatis (email/WA).</p>
                   </div>
                   <div className="mt-auto">
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-2 h-2 rounded-full bg-teal-400 shrink-0" />
-                      <span className="text-teal-400 text-[10px] font-black uppercase tracking-widest">Hasil</span>
+                      <div className="w-2 h-2 rounded-full bg-[#66B765] shrink-0" />
+                      <span className="text-[#66B765] text-[10px] font-black uppercase tracking-widest">Hasil</span>
                     </div>
                     <ul className="space-y-2">
                       {[
@@ -687,8 +684,8 @@ const App = () => {
                         'Arus kas lebih terkontrol karena penagihan lebih konsisten',
                       ].map((r, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span className="text-slate-300 text-xs leading-relaxed">{r}</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#66B765] shrink-0 mt-0.5" />
+                          <span className="text-gray-700 text-xs leading-relaxed">{r}</span>
                         </li>
                       ))}
                     </ul>
@@ -701,7 +698,7 @@ const App = () => {
         </section>
 
         {/* Section: Kasus Anda Mirip */}
-        <section id="solusi" className="w-full py-20 md:py-28 px-4 bg-white/5">
+        <section id="solusi" className="w-full py-20 md:py-28 px-4 bg-[#F7F4EE]">
           <div className="max-w-6xl mx-auto w-full">
 
             {/* Top: Kasus Mirip + Estimasi Biaya */}
@@ -710,26 +707,26 @@ const App = () => {
               {/* Left: Kasus Anda Mirip */}
               <div className="reveal flex flex-col gap-5">
                 <div>
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-4">Situasi Anda</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3 leading-tight">
-                    Kasus Anda <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Mirip?</span>
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765] font-bold text-[10px] tracking-widest uppercase mb-4">Situasi Anda</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 leading-tight">
+                    Kasus Anda <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#66B765] to-[#66B765]">Mirip?</span>
                   </h2>
                 </div>
                 <div className="space-y-3">
-                  <div className="flex items-start gap-3 p-4 bg-black/30 border border-white/10 rounded-2xl">
-                    <Lightbulb className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <p className="text-slate-300 text-sm leading-relaxed">Setiap bisnis punya workflow yang berbeda dan sistem yang dibuat juga harus menyesuaikan.</p>
+                  <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-2xl">
+                    <Lightbulb className="w-4 h-4 text-[#66B765] shrink-0 mt-0.5" />
+                    <p className="text-gray-700 text-sm leading-relaxed">Setiap bisnis punya workflow yang berbeda dan sistem yang dibuat juga harus menyesuaikan.</p>
                   </div>
-                  <div className="flex items-start gap-3 p-4 bg-black/30 border border-white/10 rounded-2xl">
-                    <Zap className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <p className="text-slate-300 text-sm leading-relaxed">Kita bisa bantu mapping solusi yang paling cocok untuk bisnis Anda.</p>
+                  <div className="flex items-start gap-3 p-4 bg-gray-50 border border-gray-200 rounded-2xl">
+                    <Zap className="w-4 h-4 text-[#66B765] shrink-0 mt-0.5" />
+                    <p className="text-gray-700 text-sm leading-relaxed">Kita bisa bantu mapping solusi yang paling cocok untuk bisnis Anda.</p>
                   </div>
                 </div>
                 <a
                   href="https://wa.me/6285191249991"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 self-start px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-2xl transition-all shadow-lg shadow-emerald-900/30"
+                  className="inline-flex items-center gap-2 self-start px-6 py-3 bg-[#66B765] hover:bg-[#4d9b4c] text-white font-bold text-sm rounded-2xl transition-all shadow-lg"
                 >
                   <i className="fa-brands fa-whatsapp text-sm"></i>
                   Konsultasi Gratis via WhatsApp
@@ -739,8 +736,8 @@ const App = () => {
               {/* Right: Estimasi Biaya */}
               <div className="reveal flex flex-col gap-4">
                 <div>
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 font-bold text-[10px] tracking-widest uppercase mb-4">Investasi</span>
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-1 leading-tight">Estimasi Biaya</h2>
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765] font-bold text-[10px] tracking-widest uppercase mb-4">Investasi</span>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-1 leading-tight">Estimasi Biaya</h2>
                 </div>
                 <div className="space-y-3">
                   {[
@@ -748,18 +745,18 @@ const App = () => {
                     { label: 'Basic Automation', price: 'Mulai 800rb', icon: <Zap className="w-4 h-4" /> },
                     { label: 'Advanced Automation', price: 'Mulai 1,5 Jt', icon: <Rocket className="w-4 h-4" /> },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center justify-between p-4 bg-black/30 border border-white/10 rounded-2xl hover:border-emerald-500/20 transition-all">
+                    <div key={i} className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-2xl hover:border-[#8ece8e] transition-all">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                        <div className="w-8 h-8 rounded-xl bg-[#f0f9f0] border border-[#b5dfb5] flex items-center justify-center text-[#66B765]">
                           {item.icon}
                         </div>
-                        <span className="text-slate-200 font-semibold text-sm">{item.label}</span>
+                        <span className="text-gray-900 font-semibold text-sm">{item.label}</span>
                       </div>
-                      <span className="text-emerald-400 font-black text-sm">{item.price}</span>
+                      <span className="text-[#66B765] font-black text-sm">{item.price}</span>
                     </div>
                   ))}
                 </div>
-                <p className="text-slate-500 text-xs">Tersedia solusi sederhana untuk kebutuhan spesifik dengan biaya lebih terjangkau.</p>
+                <p className="text-gray-500 text-xs">Tersedia solusi sederhana untuk kebutuhan spesifik dengan biaya lebih terjangkau.</p>
               </div>
             </div>
 
@@ -768,8 +765,8 @@ const App = () => {
 
               {/* Cara Kerja */}
               <div className="reveal">
-                <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-[10px] tracking-widest uppercase mb-5">Proses</span>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-6">Cara Kerja</h3>
+                <span className="inline-block px-4 py-1.5 rounded-full bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765] font-bold text-[10px] tracking-widest uppercase mb-5">Proses</span>
+                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">Cara Kerja</h3>
                 <ol className="space-y-4">
                   {[
                     'Konsultasi kebutuhan bisnis Anda',
@@ -779,48 +776,48 @@ const App = () => {
                     'Implementasi',
                   ].map((step, i) => (
                     <li key={i} className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-full bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-[#d8efd8] border border-[#8ece8e] flex items-center justify-center text-[#66B765] font-black text-xs shrink-0">
                         {i + 1}
                       </div>
-                      <span className="text-slate-300 text-sm">{step}</span>
+                      <span className="text-gray-700 text-sm">{step}</span>
                     </li>
                   ))}
                 </ol>
-                <div className="mt-6 flex items-center gap-2 p-3 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <p className="text-slate-400 text-xs">Tidak perlu install software tambahan — cukup Google Workspace.</p>
+                <div className="mt-6 flex items-center gap-2 p-3 bg-[#f0f9f0] border border-[#b5dfb5] rounded-xl">
+                  <CheckCircle2 className="w-4 h-4 text-[#66B765] shrink-0" />
+                  <p className="text-gray-600 text-xs">Tidak perlu install software tambahan — cukup Google Workspace.</p>
                 </div>
               </div>
 
               {/* CTA Box */}
               <div className="reveal">
-                <div className="bg-gradient-to-br from-emerald-900/30 to-teal-900/20 border border-emerald-500/20 rounded-3xl p-8 flex flex-col gap-5 h-full justify-center">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <div className="bg-gradient-to-br from-[#f0f9f0] to-[#f0f9f0] border border-[#8ece8e] rounded-3xl p-8 flex flex-col gap-5 h-full justify-center shadow-lg">
+                  <div className="w-12 h-12 rounded-2xl bg-[#d8efd8] border border-[#8ece8e] flex items-center justify-center text-[#66B765]">
                     <MessageCircle className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-xl md:text-2xl font-extrabold text-white mb-2 leading-tight">Konsultasikan Kebutuhan Bisnis Anda <span className="text-emerald-400">(Gratis)</span></h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">Tidak perlu langsung deal. Kita bahas dulu apakah proses bisnis Anda bisa diotomatisasi.</p>
+                    <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-2 leading-tight">Konsultasikan Kebutuhan Bisnis Anda <span className="text-[#66B765]">(Gratis)</span></h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">Tidak perlu langsung deal. Kita bahas dulu apakah proses bisnis Anda bisa diotomatisasi.</p>
                   </div>
                   <a
                     href="https://wa.me/6285191249991"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-2xl transition-all shadow-lg shadow-emerald-900/30"
+                    className="inline-flex items-center justify-center gap-2 w-full py-4 bg-[#66B765] hover:bg-[#4d9b4c] text-white font-bold text-sm rounded-2xl transition-all shadow-lg"
                   >
                     <i className="fa-brands fa-whatsapp text-sm"></i>
                     Chat WhatsApp Sekarang
                   </a>
 
                   {/* Social Media Links */}
-                  <div className="border-t border-white/10 pt-4">
-                    <p className="text-slate-500 text-xs mb-3">Social Media Kami</p>
+                  <div className="border-t border-gray-200 pt-4">
+                    <p className="text-gray-500 text-xs mb-3">Social Media Kami</p>
                     <div className="grid grid-cols-2 gap-2">
                       <a
                         href="https://wa.me/6285191249991"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#66B765] transition-colors text-sm group bg-white border border-gray-200 hover:bg-[#f0f9f0] hover:border-[#8ece8e] rounded-xl px-3 py-2.5"
                       >
                         <i className="fa-brands fa-whatsapp text-base"></i>
                         <span>WhatsApp</span>
@@ -829,7 +826,7 @@ const App = () => {
                         href="https://www.threads.com/@kiratamakreatif"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#66B765] transition-colors text-sm group bg-white border border-gray-200 hover:bg-[#f0f9f0] hover:border-[#8ece8e] rounded-xl px-3 py-2.5"
                       >
                         <i className="fa-brands fa-threads text-base"></i>
                         <span>Threads</span>
@@ -838,14 +835,14 @@ const App = () => {
                         href="https://www.instagram.com/kiratamakreatif/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#66B765] transition-colors text-sm group bg-white border border-gray-200 hover:bg-[#f0f9f0] hover:border-[#8ece8e] rounded-xl px-3 py-2.5"
                       >
                         <i className="fa-brands fa-instagram text-base"></i>
                         <span>Instagram</span>
                       </a>
                       <a
                         href="mailto:kiratamakreatif@gmail.com"
-                        className="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition-colors text-sm group bg-white/5 border border-white/10 hover:bg-emerald-500/10 hover:border-emerald-500/30 rounded-xl px-3 py-2.5"
+                        className="flex items-center gap-2 text-gray-600 hover:text-[#66B765] transition-colors text-sm group bg-white border border-gray-200 hover:bg-[#f0f9f0] hover:border-[#8ece8e] rounded-xl px-3 py-2.5"
                       >
                         <i className="fa-solid fa-envelope text-base"></i>
                         <span>Email</span>
@@ -860,10 +857,10 @@ const App = () => {
         </section>
 
         {/* Section: Portfolio */}
-        <section id="portfolio" className="w-full flex flex-col justify-center py-20 md:py-28 px-4">
+        <section id="portfolio" className="w-full flex flex-col justify-center py-20 md:py-28 px-4 bg-[#F7F4EE]">
           <div className="max-w-6xl mx-auto w-full flex flex-col">
             <div className="reveal text-center mb-4 md:mb-6">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Portofolio</h2>
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">Portofolio</h2>
             </div>
 
             {/* Filters */}
@@ -874,8 +871,8 @@ const App = () => {
                   onClick={() => setActiveFilter(filter)}
                   className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 flex items-center gap-2 backdrop-blur-md ${
                     activeFilter === filter 
-                      ? 'bg-emerald-500/20 border border-emerald-500/40 text-emerald-400' 
-                      : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10'
+                      ? 'bg-[#d8efd8] border border-[#77c577] text-[#66B765]' 
+                      : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
                   }`}
                 >
                   {filter}
@@ -886,23 +883,23 @@ const App = () => {
             {/* Project Grid */}
             <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-6 px-2 overflow-x-auto md:overflow-visible snap-x snap-mandatory no-scrollbar pb-4 md:pb-0">
               {filteredProjects.slice(0, 3).map((project) => (
-                <div key={project.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl md:rounded-3xl overflow-hidden hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-500 group">
+                <div key={project.id} className="min-w-[85vw] md:min-w-0 snap-center reveal bg-white backdrop-blur-lg border border-gray-200 rounded-2xl md:rounded-3xl overflow-hidden hover:border-[#77c577] hover:shadow-lg transition-all duration-500 group">
                   <div className="relative h-40 md:h-48 overflow-hidden">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"/>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
                   </div>
                   <div className="p-4 md:p-6">
-                    <h3 className="text-sm md:text-lg font-bold text-white mb-1 md:mb-2 group-hover:text-emerald-400 transition-colors line-clamp-1">{project.title}</h3>
-                    <p className="text-[10px] md:text-xs text-slate-400 mb-4 line-clamp-2">{project.description}</p>
+                    <h3 className="text-sm md:text-lg font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#66B765] transition-colors line-clamp-1">{project.title}</h3>
+                    <p className="text-[10px] md:text-xs text-gray-600 mb-4 line-clamp-2">{project.description}</p>
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {project.tech.slice(0, 3).map(t => (
-                        <span key={t} className="px-2 py-0.5 rounded-md text-[9px] font-semibold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">{t}</span>
+                        <span key={t} className="px-2 py-0.5 rounded-md text-[9px] font-semibold bg-[#f0f9f0] border border-[#b5dfb5] text-[#66B765]">{t}</span>
                       ))}
                     </div>
-                    <div className="flex justify-center pt-2 border-t border-white/5">
+                    <div className="flex justify-center pt-2 border-t border-gray-100">
                       <button 
                         onClick={() => window.open(project.link, '_blank')}
-                        className="w-full bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white py-2.5 rounded-xl text-[10px] md:text-xs font-bold transition-all shadow-lg shadow-emerald-900/20"
+                        className="w-full bg-gradient-to-r from-[#66B765] to-[#66B765] hover:from-[#4d9b4c] hover:to-[#4d9b4c] text-white py-2.5 rounded-xl text-[10px] md:text-xs font-bold transition-all shadow-lg"
                       >
                         Demo
                       </button>
@@ -914,10 +911,10 @@ const App = () => {
 
             {/* Lihat Lebih Banyak */}
             <div className="reveal flex flex-col items-center gap-2 mt-8">
-              <p className="text-slate-500 text-sm">Masih banyak aplikasi lain yang sudah kami buat</p>
+              <p className="text-gray-500 text-sm">Masih banyak aplikasi lain yang sudah kami buat</p>
               <button
                 onClick={() => navigate('/portofolio')}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl text-sm font-bold transition-all shadow-lg shadow-emerald-900/30"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#66B765] hover:bg-[#4d9b4c] text-white rounded-2xl text-sm font-bold transition-all shadow-lg"
               >
                 Lihat Semua Portofolio
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -934,10 +931,10 @@ const App = () => {
         rel="noopener noreferrer" 
         className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 group flex items-center justify-center"
       >
-        <span className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 pointer-events-none whitespace-nowrap hidden md:block">
+        <span className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-white border border-gray-200 shadow-lg text-gray-900 text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 pointer-events-none whitespace-nowrap hidden md:block">
           Chat dengan kami
         </span>
-        <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white rounded-2xl shadow-[0_10px_40px_rgba(16,185,129,0.4)] flex items-center justify-center transition-all duration-300 hover:-translate-y-2 active:scale-95 group-hover:rotate-6">
+        <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#66B765] to-[#66B765] hover:from-[#66B765] hover:to-[#4d9b4c] text-white rounded-2xl shadow-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-2 active:scale-95 group-hover:rotate-6">
           <i className="fa-brands fa-whatsapp text-3xl md:text-4xl text-white"></i>
         </div>
       </a>
